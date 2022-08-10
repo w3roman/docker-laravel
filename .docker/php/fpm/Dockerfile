@@ -8,3 +8,5 @@ RUN chmod +x /usr/local/bin/install-php-extensions && install-php-extensions pdo
 # /install-php-extensions
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --quiet
+
+USER www-data
