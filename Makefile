@@ -3,7 +3,7 @@ default:
 
 # ----------------------------------------------------------------------------------------------------------------------
 
-init: down up __create-project __change-permissions __change-config __ide-helper __git-operations laravel-migrate
+init: down up __create-project __change-config __ide-helper __git-operations laravel-migrate
 
 update: git-pull composer-i laravel-migrate
 
@@ -32,13 +32,6 @@ laravel-migrate:
 __create-project:
 	docker compose run --rm php-fpm rm .gitkeep
 	docker compose run --rm php-fpm composer create-project laravel/laravel .
-
-__change-permissions:
-	sudo chown -R ${USER}:root ./app
-	sudo chown -R ${USER}:www-data ./app/storage
-	sudo chown -R ${USER}:www-data ./app/bootstrap/cache
-	sudo chmod -R 775 ./app/storage
-	sudo chmod -R 775 ./app/bootstrap/cache
 
 __change-config:
 	cp ./.docker/.helpers/change-config.php ./app
