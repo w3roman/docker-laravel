@@ -30,6 +30,7 @@ laravel-migrate:
 # ----------------------------------------------------------------------------------------------------------------------
 
 __create-project:
+	docker compose run --rm php-fpm rm .gitkeep
 	docker compose run --rm php-fpm composer create-project laravel/laravel .
 
 __change-permissions:
