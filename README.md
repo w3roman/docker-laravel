@@ -24,4 +24,4 @@ git commit -m 'initial commit'
 git push -u origin master
 ```
 
-To access the app, open http://localhost:88 in your favorite browser (see [`.env`](.env) file)
+To access the app, open http://localhost:801 in your favorite browser (see [`.env`](.env) file)
