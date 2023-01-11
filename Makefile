@@ -3,7 +3,7 @@ default:
 
 # ----------------------------------------------------------------------------------------------------------------------
 
-init: down up __create-project __change-config __ide-helper __git-operations laravel-migrate
+init: down up __create-project __change-config __ide-helper __git-operations laravel-migrate laravel-ide-helper
 
 update: git-pull composer-i laravel-migrate
 
@@ -27,6 +27,11 @@ composer-u:
 laravel-migrate:
 	docker compose run --rm php-fpm php artisan migrate
 
+laravel-ide-helper:
+	docker compose run --rm php-fpm php artisan ide-helper:generate
+	docker compose run --rm php-fpm php artisan ide-helper:meta
+	docker compose run --rm php-fpm php artisan ide-helper:models --write
+
 # ----------------------------------------------------------------------------------------------------------------------
 
 __create-project:
@@ -43,9 +48,6 @@ __ide-helper:
 	docker compose run --rm php-fpm bash -c "echo '_ide_helper.php' >> .gitignore"
 	docker compose run --rm php-fpm bash -c "echo '.phpstorm.meta.php' >> .gitignore"
 	docker compose run --rm php-fpm bash -c "echo '_ide_helper_models.php' >> .gitignore"
-	docker compose run --rm php-fpm php artisan ide-helper:generate
-	docker compose run --rm php-fpm php artisan ide-helper:meta
-	docker compose run --rm php-fpm php artisan ide-helper:models
 
 __git-operations:
 	rm -fr .git
