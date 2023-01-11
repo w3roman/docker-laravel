@@ -6,10 +6,9 @@
 
 You can set environment variables in the [`.env`](.env) file before initialization
 
-During installation, you will be required to enter a password to run some commands as superuser (see [`Makefile`](Makefile))
-
 ``` sh
-git clone https://github.com/w3lifer/laravel-docker-nginx-fpm-mysql
+git clone https://github.com/w3lifer/laravel-docker-nginx-fpm-mysql laravel
+cd laravel
 make init
 ```
 
