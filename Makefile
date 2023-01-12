@@ -5,7 +5,7 @@ default:
 
 init: down up __create-project __change-config __ide-helper __git-operations laravel-migrate laravel-ide-helper
 
-update: git-pull composer-i laravel-migrate
+update: down up git-pull composer-i laravel-migrate
 
 # ----------------------------------------------------------------------------------------------------------------------
 
