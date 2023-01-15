@@ -23,17 +23,15 @@ services:
         condition: service_healthy
     working_dir: /app
   mysql:
-    image: mysql:8.0.30
+    image: mysql:8.0.4
     env_file:
       - .env
     ports:
       - ${MYSQL_HOST_PORT}:3306
     volumes:
-      - mysql:/var/lib/mysql
+      - ./.docker/.mysql:/var/lib/mysql
     healthcheck:
       test: ['CMD', 'mysqladmin' ,'ping', '-h', 'localhost']
       interval: 5s
       timeout: 5s
       retries: 20
-volumes:
-  mysql:
