@@ -1,13 +1,7 @@
 default:
 	@echo 'Enter command'
 
-# ----------------------------------------------------------------------------------------------------------------------
-
-init: down up __create-project __change-config __ide-helper __git-operations laravel-migrate laravel-ide-helper
-
-update: down up git-pull composer-i laravel-migrate
-
-# ----------------------------------------------------------------------------------------------------------------------
+start: down up git-pull composer-i laravel-migrate laravel-ide-helper
 
 down:
 	docker compose down -v --remove-orphans
@@ -21,9 +15,6 @@ git-pull:
 composer-i:
 	docker compose run --rm php-fpm composer i
 
-composer-u:
-	docker compose run --rm php-fpm composer u
-
 laravel-migrate:
 	docker compose run --rm php-fpm php artisan migrate
 
@@ -33,6 +24,8 @@ laravel-ide-helper:
 	docker compose run --rm php-fpm php artisan ide-helper:models --write
 
 # ----------------------------------------------------------------------------------------------------------------------
+
+init: down up __create-project __change-config __ide-helper __git-operations laravel-migrate laravel-ide-helper __clear
 
 __create-project:
 	docker compose run --rm php-fpm rm .gitkeep
@@ -50,7 +43,13 @@ __ide-helper:
 	docker compose run --rm php-fpm bash -c "echo '_ide_helper_models.php' >> .gitignore"
 
 __git-operations:
-	rm -fr .git
-	git init
+#	rm -fr .git
+#	git init
 
-# ----------------------------------------------------------------------------------------------------------------------
+__clear:
+	cp ./.docker/.helpers/clear-makefile.php ./app
+	cp ./Makefile ./app/Makefile
+	docker compose run --rm php-fpm php clear-makefile.php
+	mv ./app/Makefile ./Makefile
+	rm ./app/clear-makefile.php
+	rm -r ./.docker/.helpers
