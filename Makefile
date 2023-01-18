@@ -43,8 +43,8 @@ __ide-helper:
 	docker compose run --rm php-fpm bash -c "echo '_ide_helper_models.php' >> .gitignore"
 
 __git-operations:
-#	rm -fr .git
-#	git init
+	rm -fr .git
+	git init
 
 __clear:
 	cp ./.docker/.helpers/clear-makefile.php ./app
