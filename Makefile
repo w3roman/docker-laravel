@@ -25,7 +25,7 @@ laravel-ide-helper:
 
 # ----------------------------------------------------------------------------------------------------------------------
 
-init: down up __create-project __change-config __ide-helper __git-operations laravel-migrate laravel-ide-helper __clear
+init: down up __create-project __change-config laravel-migrate __ide-helper laravel-ide-helper __clear __git-operations
 
 __create-project:
 	docker compose run --rm php-fpm rm .gitkeep
@@ -42,10 +42,6 @@ __ide-helper:
 	docker compose run --rm php-fpm bash -c "echo '.phpstorm.meta.php' >> .gitignore"
 	docker compose run --rm php-fpm bash -c "echo '_ide_helper_models.php' >> .gitignore"
 
-__git-operations:
-	rm -fr .git
-	git init
-
 __clear:
 	cp ./.docker/.helpers/clear-makefile.php ./app
 	cp ./Makefile ./app/Makefile
@@ -53,3 +49,7 @@ __clear:
 	mv ./app/Makefile ./Makefile
 	rm ./app/clear-makefile.php
 	rm -r ./.docker/.helpers
+
+__git-operations:
+	rm -fr .git
+	git init
