@@ -30,6 +30,7 @@ init: down up __create-project __change-config laravel-migrate __ide-helper lara
 __create-project:
 	docker compose run --rm php-fpm rm .gitkeep
 	docker compose run --rm php-fpm composer create-project laravel/laravel .
+	docker compose run --rm php-fpm composer require predis/predis
 
 __change-config:
 	cp ./.docker/.helpers/change-config.php ./app
