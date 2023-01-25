@@ -1,6 +1,6 @@
 FROM php:8.2.1-fpm
 
-RUN apt-get update && apt-get upgrade && apt-get install -y unzip
+RUN apt-get update && apt-get upgrade -y && apt-get install -y unzip
 
 # install-php-extensions
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
