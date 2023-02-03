@@ -23,6 +23,9 @@ laravel-ide-helper:
 	docker compose run --rm php-fpm php artisan ide-helper:meta
 	docker compose run --rm php-fpm php artisan ide-helper:models --write
 
+bash:
+	docker compose run --rm php-fpm bash
+
 # ----------------------------------------------------------------------------------------------------------------------
 
 init: down up __create-project __change-config laravel-migrate __ide-helper laravel-ide-helper __clear __git-operations
