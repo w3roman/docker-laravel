@@ -1,4 +1,4 @@
-FROM php:8.2.1-fpm
+FROM php:8.2.7-fpm
 
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
 RUN apt-get update && apt-get upgrade -y && apt-get install -y nodejs unzip
