@@ -21,7 +21,7 @@ laravel-migrate:
 laravel-ide-helper:
 	docker compose run --rm php-fpm php artisan ide-helper:generate
 	docker compose run --rm php-fpm php artisan ide-helper:meta
-	docker compose run --rm php-fpm php artisan ide-helper:models --write
+	docker compose run --rm php-fpm php artisan ide-helper:models --reset --write
 
 bash:
 	docker compose run --rm php-fpm bash
