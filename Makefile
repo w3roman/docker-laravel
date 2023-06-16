@@ -15,6 +15,9 @@ git-pull:
 composer-i:
 	docker compose run --rm php-fpm composer i
 
+composer-u:
+	docker compose run --rm php-fpm composer u
+
 laravel-migrate:
 	docker compose run --rm php-fpm php artisan migrate
 
