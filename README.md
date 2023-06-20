@@ -1,6 +1,7 @@
 # laravel-docker-nginx-fpm-mysql
 
 - [Installation](#installation)
+- [Deploying an existing project](#deploying-an-existing-project)
 
 ## Installation
 
@@ -24,3 +25,11 @@ git push -u origin master
 ```
 
 To access the app, open http://localhost:801 in your favorite browser (see [`.env`](.env) file)
+
+## Deploying an existing project
+
+``` sh
+git clone git@github.com:<user>/<repo>
+cd <repo>
+make start-dev # make start-prod
+```
