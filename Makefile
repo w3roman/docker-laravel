@@ -1,7 +1,8 @@
 default:
 	@echo 'Enter command'
 
-start: down git-pull up composer-i laravel-migrate laravel-ide-helper
+start-prod: down git-pull up composer-i laravel-migrate
+start-dev: start-prod laravel-ide-helper
 
 down:
 	docker compose down -v --remove-orphans
