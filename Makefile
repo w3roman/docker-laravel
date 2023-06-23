@@ -24,8 +24,8 @@ laravel-migrate:
 	docker compose exec php-fpm php artisan migrate
 
 laravel-ide-helper:
-	docker compose exec php-fpm php artisan ide-helper:generate
 	docker compose exec php-fpm php artisan ide-helper:meta
+	docker compose exec php-fpm php artisan ide-helper:generate
 	docker compose exec php-fpm php artisan ide-helper:models --reset --write
 
 bash:
@@ -47,9 +47,8 @@ __change-config:
 
 __ide-helper:
 	docker compose exec php-fpm composer require --dev barryvdh/laravel-ide-helper
-	docker compose exec php-fpm bash -c "echo '_ide_helper.php' >> .gitignore"
 	docker compose exec php-fpm bash -c "echo '.phpstorm.meta.php' >> .gitignore"
-	docker compose exec php-fpm bash -c "echo '_ide_helper_models.php' >> .gitignore"
+	docker compose exec php-fpm bash -c "echo '_ide_helper.php' >> .gitignore"
 
 __clear:
 	cp ./.docker/.helpers/clear-makefile.php ./app
