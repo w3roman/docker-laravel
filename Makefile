@@ -2,6 +2,7 @@ default:
 	@echo 'Enter command'
 
 start-prod: down git-pull up composer-i laravel-migrate
+	docker compose exec php-fpm php artisan storage:link
 start-dev: start-prod laravel-ide-helper
 
 down:
