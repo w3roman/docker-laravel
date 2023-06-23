@@ -47,8 +47,8 @@ __change-config:
 
 __ide-helper:
 	docker compose exec php-fpm composer require --dev barryvdh/laravel-ide-helper
-	docker compose exec php-fpm bash -c "echo '.phpstorm.meta.php' >> .gitignore"
-	docker compose exec php-fpm bash -c "echo '_ide_helper.php' >> .gitignore"
+	docker compose exec php-fpm echo '.phpstorm.meta.php' >> app/.gitignore
+	docker compose exec php-fpm echo '_ide_helper.php' >> app/.gitignore
 
 __clear:
 	cp ./.docker/.helpers/clear-makefile.php ./app
