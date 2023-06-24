@@ -3,7 +3,10 @@ default:
 
 start-prod: down git-pull up composer-i laravel-migrate
 	docker compose exec php-fpm php artisan storage:link
+sp: start-prod
+
 start-dev: start-prod laravel-ide-helper
+sd: start-dev
 
 down:
 	docker compose down -v --remove-orphans
