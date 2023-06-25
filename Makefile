@@ -10,6 +10,7 @@ sd: start-dev
 
 down:
 	docker compose down -v --remove-orphans
+d: down
 
 up:
 	docker compose up -d --build --remove-orphans
