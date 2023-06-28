@@ -1,19 +1,15 @@
 default:
 	@echo 'Enter command'
 
-start-prod: down git-pull up composer-i laravel-migrate
+start: laravel-migrate-reset down git-pull up composer-i laravel-migrate laravel-db-seed laravel-ide-helper
 	docker compose exec php-fpm php artisan storage:link
-sp: start-prod
-
-start-dev: start-prod laravel-ide-helper
-sd: start-dev
-
-down:
-	docker compose down -v --remove-orphans
-d: down
+	docker compose exec php-fpm bash
 
 up:
 	docker compose up -d --build --remove-orphans
+
+down:
+	docker compose down -v --remove-orphans
 
 git-pull:
 	git pull
@@ -27,13 +23,30 @@ composer-u:
 laravel-migrate:
 	docker compose exec php-fpm php artisan migrate
 
+laravel-migrate-reset:
+	docker compose run --rm php-fpm php artisan migrate:reset
+
+laravel-db-seed:
+	docker compose exec php-fpm php artisan db:seed
+
 laravel-ide-helper:
-	docker compose exec php-fpm php artisan ide-helper:meta
 	docker compose exec php-fpm php artisan ide-helper:generate
+	docker compose exec php-fpm php artisan ide-helper:meta
 	docker compose exec php-fpm php artisan ide-helper:models --reset --write
 
 bash:
 	docker compose exec php-fpm bash
+
+update-dev:
+	cd app \
+	&& php artisan migrate:reset \
+	&& cd .. \
+	&& git pull \
+	&& cd app \
+	&& composer i \
+	&& php artisan migrate \
+	&& php artisan db:seed \
+	&& rm -fr $(ls storage/app/public)
 
 # ----------------------------------------------------------------------------------------------------------------------
 
