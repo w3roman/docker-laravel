@@ -1,7 +1,8 @@
 FROM php:8.2.7-fpm
 
-RUN apt update && apt upgrade && apt install -y unzip
-#RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt update && apt install -y nodejs
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+RUN apt update && apt upgrade -y && apt install -y nodejs unzip
+RUN npm install -g npm@latest
 
 # install-php-extensions
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
