@@ -31,5 +31,5 @@ To access the app, open http://localhost:801 in your favorite browser (see [`.en
 ``` sh
 git clone git@github.com:<user>/<repo>
 cd <repo>
-make start-dev # make start-prod
+make start
 ```
