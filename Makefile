@@ -62,7 +62,13 @@ update-dev:
 
 # ----------------------------------------------------------------------------------------------------------------------
 
-init: down up __create-project __change-config laravel-migrate __ide-helper laravel-ide-helper npm-i npm-build __clear __git-operations
+init: down up \
+	__create-project __change-config \
+	laravel-storage-link \
+	laravel-migrate \
+	__ide-helper laravel-ide-helper \
+	npm-i npm-build \
+	__clear __git-operations
 
 __create-project:
 	docker compose exec php-fpm rm .gitkeep
