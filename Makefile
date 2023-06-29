@@ -1,9 +1,10 @@
 default:
 	@echo 'Enter command'
 
-start: laravel-migrate-reset down git-pull up composer-i laravel-migrate laravel-db-seed laravel-ide-helper
-	docker compose exec php-fpm php artisan storage:link
-	docker compose exec php-fpm bash
+start: laravel-migrate-reset down git-pull up composer-i \
+	laravel-migrate laravel-db-seed laravel-ide-helper laravel-storage-link \
+	npm-i npm-build \
+	bash
 
 up:
 	docker compose up -d --build --remove-orphans
@@ -37,6 +38,15 @@ laravel-ide-helper:
 bash:
 	docker compose exec php-fpm bash
 
+laravel-storage-link:
+	docker compose exec php-fpm php artisan storage:link
+
+npm-i:
+	docker compose exec php-fpm npm i
+
+npm-build:
+	docker compose exec php-fpm npm run build
+
 update-dev:
 	cd app \
 	&& php artisan migrate:reset \
@@ -46,11 +56,13 @@ update-dev:
 	&& composer i \
 	&& php artisan migrate \
 	&& php artisan db:seed \
+	&& npm i \
+	&& npm run build \
 	&& rm -fr $(ls storage/app/public)
 
 # ----------------------------------------------------------------------------------------------------------------------
 
-init: down up __create-project __change-config laravel-migrate __ide-helper laravel-ide-helper __clear __git-operations
+init: down up __create-project __change-config laravel-migrate __ide-helper laravel-ide-helper npm-i npm-build __clear __git-operations
 
 __create-project:
 	docker compose exec php-fpm rm .gitkeep
