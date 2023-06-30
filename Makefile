@@ -35,9 +35,6 @@ laravel-ide-helper:
 	docker compose exec php-fpm php artisan ide-helper:meta
 	docker compose exec php-fpm php artisan ide-helper:models --reset --write
 
-bash:
-	docker compose exec php-fpm bash
-
 laravel-storage-link:
 	docker compose exec php-fpm php artisan storage:link
 
@@ -49,6 +46,9 @@ npm-i:
 
 npm-build:
 	docker compose exec php-fpm npm run build
+
+bash:
+	docker compose exec php-fpm bash
 
 update-dev:
 	cd app \
