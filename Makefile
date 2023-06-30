@@ -2,7 +2,7 @@ default:
 	@echo 'Enter command'
 
 start: laravel-migrate-reset down git-pull up composer-i \
-	laravel-migrate laravel-db-seed laravel-ide-helper laravel-storage-link \
+	laravel-migrate laravel-db-seed laravel-ide-helper laravel-storage-link laravel-optimize-clear \
 	npm-i npm-build \
 	bash
 
@@ -41,6 +41,9 @@ bash:
 laravel-storage-link:
 	docker compose exec php-fpm php artisan storage:link
 
+laravel-optimize-clear:
+	docker compose exec php-fpm php artisan optimize:clear
+
 npm-i:
 	docker compose exec php-fpm npm i
 
@@ -56,6 +59,7 @@ update-dev:
 	&& composer i \
 	&& php artisan migrate \
 	&& php artisan db:seed \
+	&& php artisan optimize:clear \
 	&& npm i \
 	&& npm run build \
 	&& rm -fr $(ls storage/app/public)
