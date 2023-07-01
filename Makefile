@@ -56,13 +56,13 @@ update-dev:
 	&& cd .. \
 	&& git pull \
 	&& cd app \
+	&& rm -fr $(ls storage/app/public) \
 	&& composer i \
 	&& php artisan migrate \
 	&& php artisan db:seed \
 	&& npm i \
 	&& npm run build \
-	&& php artisan optimize:clear \
-	&& rm -fr $(ls storage/app/public)
+	&& php artisan optimize:clear
 
 # ----------------------------------------------------------------------------------------------------------------------
 
