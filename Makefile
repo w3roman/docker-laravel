@@ -59,9 +59,9 @@ update-dev:
 	&& composer i \
 	&& php artisan migrate \
 	&& php artisan db:seed \
-	&& php artisan optimize:clear \
 	&& npm i \
 	&& npm run build \
+	&& php artisan optimize:clear \
 	&& rm -fr $(ls storage/app/public)
 
 # ----------------------------------------------------------------------------------------------------------------------
