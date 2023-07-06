@@ -1,4 +1,4 @@
-# laravel-docker-nginx-fpm-mysql
+# laravel-docker-nginx-fpm-mysql-redis
 
 - [Initialization](#initialization)
 - [Initializing an existing project](#initializing-an-existing-project)
