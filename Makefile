@@ -82,22 +82,25 @@ update-dev:
 
 __initialization: \
 	down up create-project change-config \
-	laravel-storage-link laravel-migrate laravel-ide-helper-install laravel-ide-helper \
+	install-packages \
+	laravel-storage-link laravel-migrate laravel-ide-helper-gitignore laravel-ide-helper \
 	npm-i npm-build \
 	clear-initialization-files git-init
 
 create-project:
 	docker compose exec php-fpm rm .gitkeep
 	docker compose exec php-fpm composer create-project --no-interaction --prefer-dist laravel/laravel .
-	docker compose exec php-fpm composer require predis/predis
 
 change-config:
 	cp ./.docker/.helpers/change-config.php ./app
 	docker compose exec php-fpm php change-config.php
 	rm ./app/change-config.php
 
-laravel-ide-helper-install:
+install-packages:
+	docker compose exec php-fpm composer require predis/predis
 	docker compose exec php-fpm composer require --dev barryvdh/laravel-ide-helper
+
+laravel-ide-helper-gitignore:
 	docker compose exec php-fpm echo '.phpstorm.meta.php' >> app/.gitignore
 	docker compose exec php-fpm echo '_ide_helper.php' >> app/.gitignore
 
