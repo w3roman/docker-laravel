@@ -60,10 +60,9 @@ update-dev:
 	&& git pull \
 	&& cd app \
 	&& composer i \
-	&& rm -fr $(ls storage/app/public) \
+	&& rm -fr storage/app/public/* \
 	&& php artisan migrate && php artisan db:seed \
-	&& npm i \
-	&& npm run build \
+	&& npm i && npm run build \
 	&& php artisan optimize:clear
 
 # ----------------------------------------------------------------------------------------------------------------------
