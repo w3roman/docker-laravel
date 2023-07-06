@@ -1,7 +1,8 @@
 default:
 	@echo 'Enter command'
 
-start: laravel-migrate-reset down git-pull up composer-i \
+start: down laravel-migrate-reset git-pull up \
+	composer-i \
 	laravel-migrate laravel-db-seed laravel-ide-helper laravel-storage-link laravel-optimize-clear \
 	npm-i npm-build \
 	bash
@@ -17,9 +18,6 @@ git-pull:
 
 composer-i:
 	docker compose exec php-fpm composer i
-
-composer-u:
-	docker compose exec php-fpm composer u
 
 laravel-migrate:
 	docker compose exec php-fpm php artisan migrate
