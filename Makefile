@@ -85,7 +85,8 @@ __initialization: \
 	install-packages \
 	laravel-storage-link laravel-migrate laravel-ide-helper-gitignore laravel-ide-helper \
 	npm-i npm-build \
-	clear-initialization-files git-init
+	clear-initialization-files \
+	git-init
 
 create-project:
 	docker compose exec php-fpm rm .gitkeep
