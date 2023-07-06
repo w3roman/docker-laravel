@@ -2,7 +2,7 @@
 
 - [Initialization](#initialization)
 - [Initializing an existing project](#initializing-an-existing-project)
-- [Starting a project](#starting-a-project)
+- [Starting an existing project](#starting-an-existing-project)
 
 ## Initialization
 
@@ -35,7 +35,7 @@ cd <repo>
 make __init
 ```
 
-## Starting a project
+## Starting an existing project
 
 ``` sh
 cd /path/to/project && make start
