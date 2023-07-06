@@ -1,7 +1,17 @@
 default:
 	@echo 'Enter command'
 
-start: down laravel-migrate-reset git-pull up \
+__init: \
+	up \
+	composer-i \
+	laravel-key-generate laravel-storage-link \
+	laravel-migrate laravel-db-seed laravel-ide-helper \
+	npm-i npm-build \
+	laravel-optimize-clear \
+	bash
+
+start: \
+	down laravel-migrate-reset git-pull up \
 	composer-i \
 	clear-uploaded-media \
 	laravel-migrate laravel-db-seed laravel-ide-helper \
@@ -21,8 +31,14 @@ git-pull:
 composer-i:
 	docker compose exec php-fpm composer i
 
+laravel-key-generate:
+	docker compose exec php-fpm php artisan key:generate
+
 laravel-storage-link:
 	docker compose exec php-fpm php artisan storage:link
+
+clear-uploaded-media:
+	rm -fr app/storage/app/public/*
 
 laravel-migrate-reset:
 	docker compose run --rm php-fpm php artisan migrate:reset
@@ -46,9 +62,6 @@ npm-build:
 
 laravel-optimize-clear:
 	docker compose exec php-fpm php artisan optimize:clear
-
-clear-uploaded-media:
-	rm -fr app/storage/app/public/*
 
 bash:
 	docker compose exec php-fpm bash
