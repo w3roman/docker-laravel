@@ -9,7 +9,7 @@
 > You can set environment variables in the [`.env`](.env) file
 
 ``` sh
-git clone https://github.com/w3lifer/laravel-docker-nginx-fpm-mysql laravel
+git clone https://github.com/w3lifer/laravel-docker-nginx-fpm-mysql-redis laravel
 cd laravel
 make __initialization
 ```
