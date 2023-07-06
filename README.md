@@ -32,7 +32,7 @@ git push -u origin master
 ``` sh
 git clone git@github.com:<user>/<repo>
 cd <repo>
-make __init
+make __initialization-an-existing-project
 ```
 
 ## Starting an existing project

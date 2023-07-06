@@ -1,7 +1,7 @@
 default:
 	@echo 'Enter command'
 
-__init: \
+__initialization-an-existing-project: \
 	up \
 	composer-i \
 	laravel-key-generate laravel-storage-link \
