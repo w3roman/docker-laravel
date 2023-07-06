@@ -69,8 +69,7 @@ update-dev:
 init: down up \
 	__create-project __change-config \
 	laravel-storage-link \
-	laravel-migrate \
-	__ide-helper laravel-ide-helper \
+	laravel-migrate __laravel-ide-helper laravel-ide-helper \
 	npm-i npm-build \
 	__clear __git-operations
 
@@ -84,7 +83,7 @@ __change-config:
 	docker compose exec php-fpm php change-config.php
 	rm ./app/change-config.php
 
-__ide-helper:
+__laravel-ide-helper:
 	docker compose exec php-fpm composer require --dev barryvdh/laravel-ide-helper
 	docker compose exec php-fpm echo '.phpstorm.meta.php' >> app/.gitignore
 	docker compose exec php-fpm echo '_ide_helper.php' >> app/.gitignore
