@@ -90,7 +90,8 @@ __initialization: \
 	laravel-storage-link \
 	npm-i npm-build \
 	clear-initialization-files \
-	git-init
+	git-init \
+	bash
 
 create-project:
 	docker compose exec php-fpm rm .gitkeep
