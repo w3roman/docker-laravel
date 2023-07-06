@@ -80,29 +80,28 @@ update-dev:
 
 # ----------------------------------------------------------------------------------------------------------------------
 
-init: down up \
-	__create-project __change-config \
-	laravel-storage-link \
-	laravel-migrate __laravel-ide-helper laravel-ide-helper \
+__initialization: \
+	down up create-project change-config \
+	laravel-storage-link laravel-migrate laravel-ide-helper-install laravel-ide-helper \
 	npm-i npm-build \
-	__clear __git-operations
+	clear-initialization-files git-init
 
-__create-project:
+create-project:
 	docker compose exec php-fpm rm .gitkeep
 	docker compose exec php-fpm composer create-project laravel/laravel .
 	docker compose exec php-fpm composer require predis/predis
 
-__change-config:
+change-config:
 	cp ./.docker/.helpers/change-config.php ./app
 	docker compose exec php-fpm php change-config.php
 	rm ./app/change-config.php
 
-__laravel-ide-helper:
+laravel-ide-helper-install:
 	docker compose exec php-fpm composer require --dev barryvdh/laravel-ide-helper
 	docker compose exec php-fpm echo '.phpstorm.meta.php' >> app/.gitignore
 	docker compose exec php-fpm echo '_ide_helper.php' >> app/.gitignore
 
-__clear:
+clear-initialization-files:
 	cp ./.docker/.helpers/clear-makefile.php ./app
 	cp ./Makefile ./app/Makefile
 	docker compose exec php-fpm php clear-makefile.php
@@ -110,6 +109,6 @@ __clear:
 	rm ./app/clear-makefile.php
 	rm -r ./.docker/.helpers
 
-__git-operations:
+git-init:
 	rm -fr .git
 	git init

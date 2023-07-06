@@ -1,19 +1,20 @@
 # laravel-docker-nginx-fpm-mysql
 
-- [Installation](#installation)
-- [Deploying an existing project](#deploying-an-existing-project)
+- [Initialization](#initialization)
+- [Initializing an existing project](#initializing-an-existing-project)
+- [Starting a project](#starting-a-project)
 
-## Installation
+## Initialization
 
-You can set environment variables in the [`.env`](.env) file before initialization
+> You can set environment variables in the [`.env`](.env) file
 
 ``` sh
 git clone https://github.com/w3lifer/laravel-docker-nginx-fpm-mysql laravel
 cd laravel
-make init
+make __initialization
 ```
 
-After installation the `.git` directory will be removed and the new repository will be initialized
+After initialization, the `.git` directory will be deleted and the new repository will be created
 
 Hence, you can add your remote `origin` to the newly created repository, commit and push the initial commit:
 
@@ -24,12 +25,18 @@ git commit -m 'initial commit'
 git push -u origin master
 ```
 
-To access the app, open http://localhost:801 in your favorite browser (see [`.env`](.env) file)
+> To access the app, open http://localhost:801 in your favorite browser (see [`.env`](.env) file)
 
-## Deploying an existing project
+## Initializing an existing project
 
 ``` sh
 git clone git@github.com:<user>/<repo>
 cd <repo>
-make start
+make __init
+```
+
+## Starting a project
+
+``` sh
+cd /path/to/project && make start
 ```
