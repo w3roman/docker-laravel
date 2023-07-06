@@ -3,8 +3,10 @@ default:
 
 start: down laravel-migrate-reset git-pull up \
 	composer-i \
-	laravel-migrate laravel-db-seed laravel-ide-helper laravel-storage-link laravel-optimize-clear \
+	clear-uploaded-media \
+	laravel-migrate laravel-db-seed laravel-ide-helper \
 	npm-i npm-build \
+	laravel-optimize-clear \
 	bash
 
 up:
@@ -19,11 +21,14 @@ git-pull:
 composer-i:
 	docker compose exec php-fpm composer i
 
-laravel-migrate:
-	docker compose exec php-fpm php artisan migrate
+laravel-storage-link:
+	docker compose exec php-fpm php artisan storage:link
 
 laravel-migrate-reset:
 	docker compose run --rm php-fpm php artisan migrate:reset
+
+laravel-migrate:
+	docker compose exec php-fpm php artisan migrate
 
 laravel-db-seed:
 	docker compose exec php-fpm php artisan db:seed
@@ -33,17 +38,17 @@ laravel-ide-helper:
 	docker compose exec php-fpm php artisan ide-helper:meta
 	docker compose exec php-fpm php artisan ide-helper:models --reset --write
 
-laravel-storage-link:
-	docker compose exec php-fpm php artisan storage:link
-
-laravel-optimize-clear:
-	docker compose exec php-fpm php artisan optimize:clear
-
 npm-i:
 	docker compose exec php-fpm npm i
 
 npm-build:
 	docker compose exec php-fpm npm run build
+
+laravel-optimize-clear:
+	docker compose exec php-fpm php artisan optimize:clear
+
+clear-uploaded-media:
+	rm -fr app/storage/app/public/*
 
 bash:
 	docker compose exec php-fpm bash
@@ -54,10 +59,9 @@ update-dev:
 	&& cd .. \
 	&& git pull \
 	&& cd app \
-	&& rm -fr $(ls storage/app/public) \
 	&& composer i \
-	&& php artisan migrate \
-	&& php artisan db:seed \
+	&& rm -fr $(ls storage/app/public) \
+	&& php artisan migrate && php artisan db:seed \
 	&& npm i \
 	&& npm run build \
 	&& php artisan optimize:clear
