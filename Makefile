@@ -81,9 +81,12 @@ update-dev:
 # ----------------------------------------------------------------------------------------------------------------------
 
 __initialization: \
-	down up create-project change-config \
+	down up \
+	create-project change-config \
 	install-packages \
-	laravel-storage-link laravel-migrate laravel-ide-helper-gitignore laravel-ide-helper \
+	laravel-migrate \
+	laravel-ide-helper laravel-ide-helper-gitignore \
+	laravel-storage-link \
 	npm-i npm-build \
 	clear-initialization-files \
 	git-init
