@@ -75,7 +75,8 @@ update-dev:
 	&& cd app \
 	&& composer i \
 	&& rm -fr storage/app/public/* \
-	&& php artisan migrate && php artisan db:seed \
+	&& php artisan migrate \
+	&& php artisan db:seed \
 	&& npm i && npm run build \
 	&& php artisan optimize:clear
 
