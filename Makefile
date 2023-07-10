@@ -81,7 +81,7 @@ __update-dev:
 	&& php artisan optimize:clear
 
 update-prod:
-	&& git pull \
+	git pull \
 	&& cd app \
 	&& composer i \
 	&& php artisan migrate \
