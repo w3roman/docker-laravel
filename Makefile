@@ -67,7 +67,7 @@ laravel-optimize-clear:
 bash:
 	docker compose exec php-fpm bash
 
-update-dev:
+__update-dev:
 	cd app \
 	&& php artisan migrate:reset \
 	&& cd .. \
