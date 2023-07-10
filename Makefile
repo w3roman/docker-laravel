@@ -79,6 +79,14 @@ update-dev:
 	&& npm i && npm run build \
 	&& php artisan optimize:clear
 
+update-prod:
+	&& git pull \
+	&& cd app \
+	&& composer i \
+	&& php artisan migrate \
+	&& npm i && npm run build \
+	&& php artisan optimize:clear
+
 # ----------------------------------------------------------------------------------------------------------------------
 
 __initialization: \
