@@ -11,7 +11,7 @@ __initialization-an-existing-project: \
 	bash
 
 start: \
-	down laravel-migrate-reset git-pull up \
+	down laravel-db-wipe git-pull up \
 	composer-i \
 	clear-uploaded-media \
 	laravel-migrate laravel-db-seed laravel-ide-helper \
@@ -41,14 +41,14 @@ laravel-storage-link:
 clear-uploaded-media:
 	rm -fr app/storage/app/public/*
 
-laravel-migrate-reset:
-	docker compose run --rm php-fpm php artisan migrate:reset
-
 laravel-migrate:
 	docker compose exec php-fpm php artisan migrate
 
 laravel-db-seed:
 	docker compose exec php-fpm php artisan db:seed
+
+laravel-db-wipe:
+	docker compose run --rm php-fpm php artisan db:wipe
 
 laravel-ide-helper:
 	docker compose exec php-fpm php artisan ide-helper:generate
@@ -69,7 +69,7 @@ bash:
 
 __update-dev:
 	cd app \
-	&& php artisan migrate:reset \
+	&& php artisan db:wipe \
 	&& cd .. \
 	&& git pull \
 	&& cd app \
