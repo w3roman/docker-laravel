@@ -1,4 +1,4 @@
-# laravel-docker-nginx-fpm-mysql-redis
+# laravel-docker-nginx-php-fpm-mysql-redis
 
 - [Initialization](#initialization)
 - [Initializing an existing project](#initializing-an-existing-project)
@@ -9,7 +9,7 @@
 > You can set environment variables in the [`.env`](.env) file
 
 ``` sh
-git clone https://github.com/w3lifer/laravel-docker-nginx-fpm-mysql-redis laravel
+git clone https://github.com/w3lifer/laravel-docker-nginx-php-fpm-mysql-redis laravel
 cd laravel
 make __initialization
 ```
