@@ -3,8 +3,7 @@ default:
 
 start: \
 	down \
-	clear-uploaded-media \
-	laravel-db-wipe \
+	delete-uploaded-files-and-db \
 	git-pull \
 	up \
 	composer-i \
@@ -34,17 +33,15 @@ laravel-key-generate:
 laravel-storage-link:
 	docker compose exec php-fpm php artisan storage:link
 
-clear-uploaded-media:
-	rm -fr app/storage/app/public/*
+delete-uploaded-files-and-db:
+	docker compose run --rm php-fpm bash -c 'rm -fr storage/app/public/*'
+	docker compose run --rm php-fpm php artisan db:wipe
 
 laravel-migrate:
 	docker compose exec php-fpm php artisan migrate
 
 laravel-db-seed:
 	docker compose exec php-fpm php artisan db:seed
-
-laravel-db-wipe:
-	docker compose run --rm php-fpm php artisan db:wipe
 
 laravel-ide-helper:
 	docker compose exec php-fpm php artisan ide-helper:generate
