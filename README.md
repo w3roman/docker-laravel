@@ -6,11 +6,14 @@
 
 ## Initialization
 
-> You can set environment variables in the [`.env`](.env) file
-
 ``` sh
 git clone https://github.com/w3lifer/laravel-docker-nginx-php-fpm-mysql-redis laravel
 cd laravel
+```
+
+> You can set environment variables in the [`.env`](.env) file
+
+``` sh
 make initialization
 ```
 
@@ -38,5 +41,5 @@ make initialization-an-existing-project run-with-caution=!
 ## Starting an existing project
 
 ``` sh
-cd /path/to/project && make start
+make start
 ```

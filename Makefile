@@ -2,11 +2,17 @@ default:
 	@echo 'Enter command'
 
 start: \
-	down laravel-db-wipe git-pull up \
-	composer-i \
+	down \
 	clear-uploaded-media \
-	laravel-migrate laravel-db-seed laravel-ide-helper \
-	npm-i npm-build \
+	laravel-db-wipe \
+	git-pull \
+	up \
+	composer-i \
+	laravel-migrate \
+	laravel-db-seed \
+	laravel-ide-helper \
+	npm-i \
+	npm-build \
 	laravel-optimize-clear \
 	bash
 
@@ -60,25 +66,29 @@ bash:
 # make <target> run-with-caution=!
 ifeq ($(run-with-caution), !)
 initialization-an-existing-project: \
+	down \
 	up \
 	composer-i \
-	laravel-key-generate laravel-storage-link \
-	laravel-migrate laravel-db-seed laravel-ide-helper \
-	npm-i npm-build \
+	laravel-key-generate \
+	laravel-storage-link \
+	laravel-migrate \
+	laravel-db-seed \
+	laravel-ide-helper \
+	npm-i \
+	npm-build \
 	laravel-optimize-clear \
 	bash
 
 update-dev:
-	cd app \
-	&& php artisan db:wipe \
-	&& cd .. \
-	&& git pull \
+	git pull \
 	&& cd app \
-	&& composer i \
 	&& rm -fr storage/app/public/* \
+	&& php artisan db:wipe \
+	&& composer i \
 	&& php artisan migrate \
 	&& php artisan db:seed \
-	&& npm i && npm run build \
+	&& npm i \
+	&& npm run build \
 	&& php artisan optimize:clear
 endif
 
@@ -87,7 +97,8 @@ update-prod:
 	&& cd app \
 	&& composer i \
 	&& php artisan migrate \
-	&& npm i && npm run build \
+	&& npm i \
+	&& npm run build \
 	&& php artisan optimize:clear
 
 # ----------------------------------------------------------------------------------------------------------------------
