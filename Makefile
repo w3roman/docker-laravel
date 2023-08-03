@@ -1,15 +1,6 @@
 default:
 	@echo 'Enter command'
 
-__initialization-an-existing-project: \
-	up \
-	composer-i \
-	laravel-key-generate laravel-storage-link \
-	laravel-migrate laravel-db-seed laravel-ide-helper \
-	npm-i npm-build \
-	laravel-optimize-clear \
-	bash
-
 start: \
 	down laravel-db-wipe git-pull up \
 	composer-i \
@@ -66,7 +57,18 @@ laravel-optimize-clear:
 bash:
 	docker compose exec php-fpm bash
 
-__update-dev:
+# make <target> run-with-caution=!
+ifeq ($(run-with-caution), !)
+initialization-an-existing-project: \
+	up \
+	composer-i \
+	laravel-key-generate laravel-storage-link \
+	laravel-migrate laravel-db-seed laravel-ide-helper \
+	npm-i npm-build \
+	laravel-optimize-clear \
+	bash
+
+update-dev:
 	cd app \
 	&& php artisan db:wipe \
 	&& cd .. \
@@ -78,6 +80,7 @@ __update-dev:
 	&& php artisan db:seed \
 	&& npm i && npm run build \
 	&& php artisan optimize:clear
+endif
 
 update-prod:
 	git pull \
@@ -89,7 +92,7 @@ update-prod:
 
 # ----------------------------------------------------------------------------------------------------------------------
 
-__initialization: \
+initialization: \
 	down up \
 	create-project change-config \
 	install-packages \

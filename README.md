@@ -11,7 +11,7 @@
 ``` sh
 git clone https://github.com/w3lifer/laravel-docker-nginx-php-fpm-mysql-redis laravel
 cd laravel
-make __initialization
+make initialization
 ```
 
 After initialization, the `.git` directory will be deleted and the new repository will be created
@@ -32,7 +32,7 @@ git push -u origin master
 ``` sh
 git clone git@github.com:<user>/<repo>
 cd <repo>
-make __initialization-an-existing-project
+make initialization-an-existing-project run-with-caution=!
 ```
 
 ## Starting an existing project
