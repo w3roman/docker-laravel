@@ -101,13 +101,17 @@ update-prod:
 # ----------------------------------------------------------------------------------------------------------------------
 
 initialization: \
-	down up \
-	create-project change-config \
+	down \
+	up \
+	create-project \
+	change-config \
 	install-packages \
-	laravel-migrate \
-	laravel-ide-helper laravel-ide-helper-gitignore \
 	laravel-storage-link \
-	npm-i npm-build \
+	laravel-migrate \
+	laravel-ide-helper \
+	laravel-ide-helper-gitignore \
+	npm-i \
+	npm-build \
 	clear-initialization-files \
 	git-init \
 	bash
