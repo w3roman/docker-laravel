@@ -1,7 +1,8 @@
 FROM php:8.2.8-fpm
 
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
-RUN apt update && apt upgrade -y && apt install -y nodejs unzip
+# https://stackoverflow.com/q/57048428/4223982
+RUN apt update && apt upgrade -y && apt install -y mariadb-client nodejs unzip
 RUN npm install -g npm@latest
 
 # install-php-extensions
