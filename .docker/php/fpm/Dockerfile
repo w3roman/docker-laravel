@@ -1,4 +1,4 @@
-FROM php:8.2.8-fpm
+FROM php:8.2.9-fpm
 
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
 # https://stackoverflow.com/q/57048428/4223982
