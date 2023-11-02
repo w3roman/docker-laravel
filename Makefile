@@ -62,6 +62,7 @@ bash:
 
 # make <target> run-with-caution=!
 ifeq ($(run-with-caution), !)
+# Configure the .env file
 initialization-an-existing-project: \
 	down \
 	up \
