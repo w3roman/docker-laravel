@@ -12,7 +12,7 @@ RUN \
     NODE_MAJOR=20 && \
     echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | \
     tee /etc/apt/sources.list.d/nodesource.list
-RUN apt update && apt -y install nodejs && npm -g install npm@latest
+RUN apt update && apt -y install nodejs && npm -g i npm@latest
 
 # install-php-extensions
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
