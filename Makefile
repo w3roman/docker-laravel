@@ -95,10 +95,10 @@ update-prod:
 	&& cd app \
 	&& composer i \
 	&& php artisan migrate \
+	&& php artisan optimize:clear \
 	&& php artisan event:cache \
 	&& npm i \
-	&& npm run build \
-	&& php artisan optimize:clear
+	&& npm run build
 
 # ----------------------------------------------------------------------------------------------------------------------
 
