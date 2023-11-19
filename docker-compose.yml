@@ -12,8 +12,6 @@ services:
     build: ./.docker/php/fpm
     env_file:
       - ./.env
-    environment:
-      PHP_IDE_CONFIG: serverName=Docker
     volumes:
       - ./.docker/php/fpm/php.ini:/usr/local/etc/php/php.ini
       - ./.docker/php/fpm/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
