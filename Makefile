@@ -60,6 +60,9 @@ laravel-optimize-clear:
 bash:
 	docker compose exec php-fpm bash
 
+npm-run-dev:
+	docker compose exec php-fpm npm run dev
+
 # make <target> run-with-caution=!
 ifeq ($(run-with-caution), !)
 # Configure the .env file
