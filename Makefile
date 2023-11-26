@@ -131,8 +131,8 @@ change-config:
 	rm ./app/change-config.php
 
 install-packages:
-	docker compose exec php-fpm composer require predis/predis
 	docker compose exec php-fpm composer require --dev barryvdh/laravel-ide-helper
+	docker compose exec php-fpm composer require predis/predis
 
 laravel-ide-helper-gitignore:
 	docker compose exec php-fpm echo '.phpstorm.meta.php' >> app/.gitignore

@@ -1,4 +1,25 @@
-# laravel-docker-nginx-php-fpm-mysql-redis
+# laravel-docker
+
+- NGINX
+- PHP-FPM
+  - MARIADB-CLIENT
+  - UNZIP
+  - NODEJS
+  - NPM
+  - EXTENSIONS:
+    - exif
+    - pdo_mysql
+    - xdebug
+    - zip
+  - COMPOSER
+- MYSQL
+- PHPMYADMIN
+- REDIS
+- LARAVEL
+  - barryvdh/laravel-ide-helper
+  - predis/predis 
+
+---
 
 - [Initialization](#initialization)
 - [phpMyAdmin](#phpmyadmin)
