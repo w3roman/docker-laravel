@@ -63,7 +63,7 @@ Or alternately go to 'Operations' tab of any database to set it up there.
 
 4. Click "[Find out why](http://localhost:8000/index.php?route=/check-relations)":
 
-![The phpMyAdmin configuration storage is not completely configured](https://i.stack.imgur.com/xqanZ.png)
+![The phpMyAdmin configuration storage is not completely configured](https://i.stack.imgur.com/I3ZeC.png)
 
 5. On the next page, click the "Create" link:
 
