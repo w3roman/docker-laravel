@@ -29,7 +29,7 @@
 ## Initialization
 
 ``` sh
-git clone https://github.com/w3lifer/laravel-docker-nginx-php-fpm-mysql-redis laravel
+git clone https://github.com/w3lifer/laravel-docker laravel
 cd laravel
 ```
 
