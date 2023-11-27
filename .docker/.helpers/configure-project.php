@@ -1,5 +1,7 @@
 <?php
 
+// Laravel .env
+
 const PATH_TO_ENV = '.env';
 
 $config = file_get_contents(PATH_TO_ENV);
@@ -15,3 +17,9 @@ $config = preg_replace('=CACHE_DRIVER\=file=', 'CACHE_DRIVER=redis', $config);
 $config = preg_replace('=REDIS_HOST\=127\.0\.0\.1=', 'REDIS_CLIENT=predis' . "\n" . 'REDIS_HOST=redis', $config);
 
 file_put_contents(PATH_TO_ENV, $config);
+
+// package.json
+
+$packageJsonContent = json_decode(file_get_contents('package.json'), true);
+$packageJsonContent['scripts']['dev'] = 'vite --host --port=${VITE_PORT}';
+file_put_contents('package.json', $packageJsonContent);

@@ -109,7 +109,7 @@ initialization: \
 	down \
 	up \
 	create-project \
-	change-config \
+	configure-project \
 	install-packages \
 	laravel-storage-link \
 	laravel-migrate \
@@ -125,10 +125,10 @@ create-project:
 	docker compose exec php-fpm rm .gitkeep
 	docker compose exec php-fpm composer create-project --no-interaction --prefer-dist laravel/laravel .
 
-change-config:
-	cp ./.docker/.helpers/change-config.php ./app
-	docker compose exec php-fpm php change-config.php
-	rm ./app/change-config.php
+configure-project:
+	cp ./.docker/.helpers/configure-project.php ./app
+	docker compose exec php-fpm php configure-project.php
+	rm ./app/configure-project.php
 
 install-packages:
 	docker compose exec php-fpm composer require --dev barryvdh/laravel-ide-helper
