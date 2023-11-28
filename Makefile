@@ -10,10 +10,9 @@ start: \
 	laravel-migrate \
 	laravel-db-seed \
 	laravel-ide-helper \
-	npm-i \
-	npm-build \
 	laravel-optimize-clear \
-	bash
+	npm-i \
+	npm-run-dev
 
 up:
 	docker compose up -d --build --remove-orphans
@@ -48,20 +47,20 @@ laravel-ide-helper:
 	docker compose exec php-fpm php artisan ide-helper:meta
 	docker compose exec php-fpm php artisan ide-helper:models --reset --write
 
-npm-i:
-	docker compose exec php-fpm npm i
-
-npm-build:
-	docker compose exec php-fpm npm run build
-
 laravel-optimize-clear:
 	docker compose exec php-fpm php artisan optimize:clear
 
 bash:
 	docker compose exec php-fpm bash
 
+npm-i:
+	docker compose exec php-fpm npm i
+
 npm-run-dev:
 	docker compose exec php-fpm npm run dev
+
+npm-run-build:
+	docker compose exec php-fpm npm run build
 
 # make <target> run-with-caution=!
 ifeq ($(run-with-caution), !)
@@ -75,10 +74,9 @@ initialization-an-existing-project: \
 	laravel-migrate \
 	laravel-db-seed \
 	laravel-ide-helper \
-	npm-i \
-	npm-build \
 	laravel-optimize-clear \
-	bash
+	npm-i \
+	npm-run-dev
 
 update-dev:
 	git pull \
@@ -88,9 +86,9 @@ update-dev:
 	&& composer i \
 	&& php artisan migrate \
 	&& php artisan db:seed \
+	&& php artisan optimize:clear \
 	&& npm i \
-	&& npm run build \
-	&& php artisan optimize:clear
+	&& npm run build
 endif
 
 update-prod:
