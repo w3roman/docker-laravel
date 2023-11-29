@@ -114,10 +114,9 @@ initialization: \
 	laravel-ide-helper \
 	laravel-ide-helper-gitignore \
 	npm-i \
-	npm-build \
 	clear-initialization-files \
 	git-init \
-	bash
+	npm-run-dev
 
 create-project:
 	docker compose exec php-fpm rm .gitkeep
