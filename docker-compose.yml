@@ -13,9 +13,7 @@ services:
     env_file:
       - ./.env
     ports:
-      # For Vite; add  the "--host" option to "scripts.dev" in "package.json"
-      # https://stackoverflow.com/a/73697215/4223982
-      - 5173:5173
+      - ${VITE_PORT}:${VITE_PORT}
     volumes:
       - ./.docker/php/fpm/php.ini:/usr/local/etc/php/php.ini
       - ./.docker/php/fpm/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
