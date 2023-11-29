@@ -65,7 +65,7 @@ npm-run-build:
 # make <target> run-with-caution=!
 ifeq ($(run-with-caution), !)
 # Configure the .env file
-initialization-an-existing-project: \
+init-existing-project: \
 	down \
 	up \
 	composer-i \
@@ -103,7 +103,7 @@ update-prod:
 
 # ----------------------------------------------------------------------------------------------------------------------
 
-initialization: \
+init: \
 	down \
 	up \
 	create-project \
@@ -114,7 +114,7 @@ initialization: \
 	laravel-ide-helper \
 	laravel-ide-helper-gitignore \
 	npm-i \
-	clear-initialization-files \
+	clear-init-files \
 	git-init \
 	npm-run-dev
 
@@ -134,7 +134,7 @@ laravel-ide-helper-gitignore:
 	docker compose exec php-fpm echo '.phpstorm.meta.php' >> app/.gitignore
 	docker compose exec php-fpm echo '_ide_helper.php' >> app/.gitignore
 
-clear-initialization-files:
+clear-init-files:
 	cp ./.docker/.helpers/clear-makefile.php ./app
 	cp ./Makefile ./app/Makefile
 	docker compose exec php-fpm php clear-makefile.php

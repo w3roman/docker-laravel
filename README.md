@@ -34,10 +34,10 @@ cd laravel
 > You can set environment variables in the [`.env`](.env) file
 
 ``` sh
-make initialization
+make init
 ```
 
-After initialization, the `.git` directory will be deleted and the new repository will be created
+After this, the `.git` directory will be deleted and the new repository will be created
 
 Hence, you can add your remote `origin` to the newly created repository, commit and push the initial commit:
 
@@ -74,7 +74,7 @@ Or alternately go to 'Operations' tab of any database to set it up there.
 ``` sh
 git clone git@github.com:<user>/<repo>
 cd <repo>
-make initialization-an-existing-project run-with-caution=!
+make init-existing-project run-with-caution=!
 ```
 
 ## Starting an existing project
