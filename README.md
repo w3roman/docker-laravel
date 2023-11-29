@@ -14,10 +14,8 @@
   - COMPOSER
 - MYSQL
 - PHPMYADMIN
-- REDIS
 - LARAVEL
   - barryvdh/laravel-ide-helper
-  - predis/predis 
 
 ---
 
