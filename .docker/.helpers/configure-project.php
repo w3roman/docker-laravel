@@ -13,9 +13,6 @@ $config = preg_replace('=DB_DATABASE\=laravel=', 'DB_DATABASE=' . getenv('MYSQL_
 $config = preg_replace('=DB_USERNAME\=root=', 'DB_USERNAME=' . getenv('MYSQL_USER'), $config);
 $config = preg_replace('=DB_PASSWORD\==', 'DB_PASSWORD=' . getenv('MYSQL_PASSWORD'), $config);
 
-$config = preg_replace('=CACHE_DRIVER\=file=', 'CACHE_DRIVER=redis', $config);
-$config = preg_replace('=REDIS_HOST\=127\.0\.0\.1=', 'REDIS_CLIENT=predis' . "\n" . 'REDIS_HOST=redis', $config);
-
 file_put_contents(PATH_TO_ENV, $config);
 
 // package.json
