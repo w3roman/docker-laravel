@@ -52,14 +52,14 @@ To access the app, open http://localhost:800 (see [`.env`](.env) file)
 
 ## phpMyAdmin
 
-1. Open http://localhost:8000 (see [`.env`](.env) file).
+1. Open http://localhost:8001 (see [`.env`](.env) file).
 2. Login as <ins>`root`</ins>!
 3. At the bottom of the home page you will see the following notice:
 
->  The phpMyAdmin configuration storage is not completely configured, some extended features have been deactivated. [Find out why](http://localhost:8000/index.php?route=/check-relations).
+>  The phpMyAdmin configuration storage is not completely configured, some extended features have been deactivated. [Find out why](http://localhost:8001/index.php?route=/check-relations).
 Or alternately go to 'Operations' tab of any database to set it up there.
 
-4. Click "[Find out why](http://localhost:8000/index.php?route=/check-relations)":
+4. Click "[Find out why](http://localhost:8001/index.php?route=/check-relations)":
 
 ![The phpMyAdmin configuration storage is not completely configured](https://i.stack.imgur.com/I3ZeC.png)
 
