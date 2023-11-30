@@ -141,6 +141,7 @@ clear-init-files:
 	mv ./app/Makefile ./Makefile
 	rm ./app/clear-makefile.php
 	rm -r ./.docker/.helpers
+	echo '' > README.md
 
 git-init:
 	rm -fr .git
