@@ -64,7 +64,6 @@ npm-run-build:
 
 # make <target> run-with-caution=!
 ifeq ($(run-with-caution), !)
-# Configure the .env file
 init-existing-project: \
 	down \
 	up \
