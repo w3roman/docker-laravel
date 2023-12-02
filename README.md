@@ -6,13 +6,13 @@
   - UNZIP
   - NODEJS
   - NPM
+  - CRON
   - EXTENSIONS:
     - exif
     - pdo_mysql
     - xdebug
     - zip
   - COMPOSER
-  - CRON
 - MYSQL
 - PHPMYADMIN
 - LARAVEL
