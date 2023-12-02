@@ -6,7 +6,6 @@
   - UNZIP
   - NODEJS
   - NPM
-  - CRON
   - EXTENSIONS:
     - exif
     - pdo_mysql

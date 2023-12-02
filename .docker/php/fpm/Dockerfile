@@ -21,13 +21,6 @@ RUN chmod +x /usr/local/bin/install-php-extensions && install-php-extensions exi
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --quiet
 
-# cron
-RUN echo 'root:toor' | chpasswd
-COPY crontab /crontab
-RUN crontab /crontab
-CMD echo 'toor' | su -c cron && php -a
-# /cron
-
 RUN groupadd --gid 1000 dockerGroup
 RUN useradd --uid 1000 --gid dockerGroup --shell /bin/bash --create-home dockerUser
 
