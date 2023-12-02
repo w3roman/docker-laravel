@@ -53,6 +53,9 @@ laravel-optimize-clear:
 bash:
 	docker compose exec php-fpm bash
 
+mysql:
+	docker compose exec mysql bash
+
 npm-i:
 	docker compose exec php-fpm npm i
 
