@@ -16,7 +16,7 @@ RUN apt update && apt -y install nodejs && npm -g i npm@latest
 
 # install-php-extensions
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
-RUN chmod +x /usr/local/bin/install-php-extensions && install-php-extensions exif pdo_mysql xdebug zip
+RUN chmod +x /usr/local/bin/install-php-extensions && install-php-extensions exif intl pdo_mysql xdebug zip
 # /install-php-extensions
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --quiet
