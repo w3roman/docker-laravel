@@ -1,4 +1,4 @@
-FROM php:8.2.13-fpm
+FROM php:8.2.16-fpm
 
 # https://stackoverflow.com/q/57048428/4223982
 RUN apt update && apt -y upgrade && apt -y install mariadb-client unzip
