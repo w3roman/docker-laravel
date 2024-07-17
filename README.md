@@ -27,7 +27,7 @@
 ## Initialization
 
 ``` sh
-git clone https://github.com/w3lifer/laravel-docker laravel
+git clone https://gitlab.com/w3lifer/laravel-docker.git laravel
 cd laravel
 ```
 
