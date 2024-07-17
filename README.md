@@ -42,7 +42,7 @@ After this, the `.git` directory will be deleted and the new repository will be 
 Hence, you can add your remote `origin` to the newly created repository, commit and push the initial commit:
 
 ``` sh
-git remote add origin git@github.com:<user>/<repo>
+git remote add origin git@gitlab.com:<user>/<repo>
 git add .
 git commit -m 'initial commit'
 git push -u origin master
@@ -72,7 +72,7 @@ Or alternately go to 'Operations' tab of any database to set it up there.
 ## Initializing an existing project
 
 ``` sh
-git clone git@github.com:<user>/<repo>
+git clone git@gitlab.com:<user>/<repo>
 cd <repo>
 make init-existing-project run-with-caution=!
 ```
