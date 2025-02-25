@@ -2,7 +2,6 @@ default:
 	@echo 'Enter command'
 
 start: \
-	down \
 	delete-uploaded-files-and-db \
 	git-pull \
 	up \
@@ -14,13 +13,10 @@ start: \
 	npm-i \
 	npm-run-dev
 
-down:
-	docker compose down -v --remove-orphans
-
 git-pull:
 	git pull
 
-up: down
+up:
 	docker compose up -d --build --remove-orphans
 
 composer-i:
@@ -69,7 +65,6 @@ npm-run-build:
 ifeq ($(run-with-caution), !)
 # Copy the saved [.env.*] file and configure it
 init-existing-project: \
-	down \
 	up \
 	composer-i \
 	laravel-key-generate \
@@ -107,7 +102,6 @@ update-prod:
 # ----------------------------------------------------------------------------------------------------------------------
 
 init: \
-	down \
 	up \
 	create-project \
 	configure-project \
