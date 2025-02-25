@@ -14,14 +14,14 @@ start: \
 	npm-i \
 	npm-run-dev
 
-up:
-	docker compose up -d --build --remove-orphans
-
 down:
 	docker compose down -v --remove-orphans
 
 git-pull:
 	git pull
+
+up: down
+	docker compose up -d --build --remove-orphans
 
 composer-i:
 	docker compose exec php-fpm composer i
