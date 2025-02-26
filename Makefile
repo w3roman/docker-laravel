@@ -50,10 +50,10 @@ laravel-ide-helper:
 laravel-optimize-clear:
 	docker compose exec php-fpm php artisan optimize:clear
 
-bash:
+php-fpm-bash:
 	docker compose exec php-fpm bash
 
-mysql:
+mysql-bash:
 	docker compose exec mysql bash
 
 npm-i:
