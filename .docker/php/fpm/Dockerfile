@@ -1,7 +1,7 @@
 FROM php:8.4.4-fpm
 
 # https://stackoverflow.com/q/57048428/4223982
-RUN apt update && apt -y upgrade && apt -y install mariadb-client unzip
+RUN apt update && apt -y upgrade && apt -y install mariadb-client pv unzip
 
 # Node.js (https://github.com/nodesource/distributions/blob/master/README.md#installation-instructions)
 RUN apt -y install ca-certificates curl gnupg
