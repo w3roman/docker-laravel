@@ -45,11 +45,11 @@ laravel-ide-helper:
 laravel-optimize-clear:
 	docker compose exec php-fpm php artisan optimize:clear
 
-php-fpm-bash:
-	docker compose exec php-fpm bash
-
-mysql-bash:
+bash-mysql:
 	docker compose exec mysql bash
+
+bash-php-fpm:
+	docker compose exec php-fpm bash
 
 npm-i:
 	docker compose exec php-fpm npm i
