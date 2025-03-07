@@ -3,7 +3,6 @@ default:
 
 start: \
 	down \
-	delete-uploaded-files-and-db \
 	git-pull \
 	up \
 	composer-i \
@@ -31,10 +30,6 @@ laravel-key-generate:
 
 laravel-storage-link:
 	docker compose exec php-fpm php artisan storage:link
-
-delete-uploaded-files-and-db:
-	docker compose run --rm php-fpm bash -c 'rm -fr storage/app/public/*'
-	docker compose run --rm php-fpm php artisan db:wipe
 
 laravel-migrate:
 	docker compose exec php-fpm php artisan migrate
