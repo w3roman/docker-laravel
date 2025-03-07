@@ -7,7 +7,6 @@ start: \
 	up \
 	composer-i \
 	laravel-migrate \
-	laravel-db-seed \
 	laravel-ide-helper \
 	laravel-optimize-clear \
 	npm-i \
