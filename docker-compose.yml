@@ -1,15 +1,19 @@
 services:
-  nginx:
-    build: ./.docker/nginx
-    image: ${PROJECT_NAME}-nginx
-    container_name: ${PROJECT_NAME}-nginx
+  mysql:
+    build: ./.docker/mysql
+    image: ${PROJECT_NAME}-mysql
+    container_name: ${PROJECT_NAME}-mysql
+    env_file:
+      - ./.env
     ports:
-      - ${NGINX_PORT}:80
+      - ${MYSQL_HOST_PORT}:3306
     volumes:
-      - ./.docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - ./app:/app
-    depends_on:
-      - php-fpm
+      - ./.docker/.mysql:/var/lib/mysql
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+      interval: 5s
+      timeout: 5s
+      retries: 20
   php-fpm:
     build: ./.docker/php/fpm
     image: ${PROJECT_NAME}-php-fpm
@@ -26,29 +30,28 @@ services:
       mysql:
         condition: service_healthy
     working_dir: /app
-  mysql:
-    build: ./.docker/mysql
-    image: ${PROJECT_NAME}-mysql
-    container_name: ${PROJECT_NAME}-mysql
+  nginx:
+    build: ./.docker/nginx
+    image: ${PROJECT_NAME}-nginx
+    container_name: ${PROJECT_NAME}-nginx
     env_file:
       - ./.env
     ports:
-      - ${MYSQL_HOST_PORT}:3306
+      - ${NGINX_PORT}:80
     volumes:
-      - ./.docker/.mysql:/var/lib/mysql
-    healthcheck:
-      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
-      interval: 5s
-      timeout: 5s
-      retries: 20
+      - ./.docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./app:/app
+    depends_on:
+      - php-fpm
   phpmyadmin:
     build: ./.docker/phpmyadmin
     image: ${PROJECT_NAME}-phpmyadmin
     container_name: ${PROJECT_NAME}-phpmyadmin
+    env_file:
+      - ./.env
     environment:
       PMA_HOST: mysql
     ports:
       - ${PHPMYADMIN_PORT}:80
     depends_on:
-      mysql:
-        condition: service_healthy
+      - nginx
