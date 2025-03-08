@@ -25,6 +25,9 @@ up:
 composer-i:
 	docker compose exec php-fpm composer i
 
+composer-du: # dump-autoload [dumpautoload]
+	docker compose exec php-cli composer du
+
 laravel-key-generate:
 	docker compose exec php-fpm php artisan key:generate
 
