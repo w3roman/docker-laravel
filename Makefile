@@ -25,6 +25,9 @@ up:
 composer-i:
 	docker compose exec php-fpm composer i
 
+composer-u:
+	docker compose exec php-fpm composer u
+
 composer-du: # dump-autoload [dumpautoload]
 	docker compose exec php-fpm composer du
 
