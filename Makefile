@@ -38,10 +38,10 @@ laravel-migrate:
 	docker compose exec php-fpm php artisan migrate
 
 laravel-migrate-rollback-1:
-	docker compose exec php-cli php artisan migrate:rollback --step=1 --force
+	docker compose exec php-fpm php artisan migrate:rollback --step=1 --force
 
 laravel-migrate-rollback-all:
-	docker compose exec php-cli php artisan migrate:rollback --force
+	docker compose exec php-fpm php artisan migrate:rollback --force
 
 laravel-db-seed:
 	docker compose exec php-fpm php artisan db:seed
