@@ -35,7 +35,7 @@ laravel-storage-link:
 	docker compose exec php-fpm php artisan storage:link
 
 laravel-migrate:
-	docker compose exec php-fpm php artisan migrate
+	docker compose exec php-fpm php artisan migrate --force
 
 laravel-migrate-rollback-1:
 	docker compose exec php-fpm php artisan migrate:rollback --step=1 --force
