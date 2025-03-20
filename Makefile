@@ -6,6 +6,8 @@ start: \
 	git-pull \
 	up \
 	composer-i \
+	laravel-key-generate \
+	laravel-storage-link \
 	laravel-migrate \
 	laravel-ide-helper \
 	laravel-optimize-clear \
