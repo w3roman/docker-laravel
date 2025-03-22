@@ -34,7 +34,7 @@ composer-du: # dump-autoload [dumpautoload]
 	docker compose exec php-fpm composer du
 
 laravel-key-generate:
-	docker compose exec php-fpm php artisan key:generate
+	docker compose exec php-fpm php artisan key:generate --force
 
 laravel-storage-link:
 	docker compose exec php-fpm php artisan storage:link
