@@ -65,13 +65,13 @@ bash-php-fpm:
 	docker compose exec php-fpm bash
 
 npm-i:
-	docker compose exec php-fpm npm i
+	docker compose exec node npm i
 
 npm-run-dev:
-	docker compose exec php-fpm npm run dev
+	docker compose exec node npm run dev
 
 npm-run-build:
-	docker compose exec php-fpm npm run build
+	docker compose exec node npm run build
 
 # make <target> run-with-caution=!
 ifeq ($(run-with-caution), !)
