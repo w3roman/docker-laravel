@@ -52,18 +52,6 @@ services:
       - ./app:/app
     depends_on:
       - php-fpm
-  phpmyadmin:
-    build: ./.docker/phpmyadmin
-    image: ${PROJECT_NAME}-phpmyadmin
-    container_name: ${PROJECT_NAME}-phpmyadmin
-    env_file:
-      - ./.env
-    environment:
-      PMA_HOST: mysql
-    ports:
-      - ${PHPMYADMIN_PORT}:80
-    depends_on:
-      - nginx
   node:
     build: ./.docker/node
     image: ${PROJECT_NAME}-node
