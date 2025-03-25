@@ -28,6 +28,17 @@ services:
       mysql:
         condition: service_healthy
     working_dir: /app
+  cron:
+    pull_policy: never
+    image: ${PROJECT_NAME}-php-fpm
+    container_name: ${PROJECT_NAME}-cron
+    volumes:
+      - ./app:/app
+      - ./.env:/etc/environment
+    depends_on:
+      - php-fpm
+    user: root
+    entrypoint: ['cron', '-f']
   nginx:
     build: ./.docker/nginx
     image: ${PROJECT_NAME}-nginx
