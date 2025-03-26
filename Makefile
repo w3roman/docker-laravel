@@ -13,7 +13,6 @@ start: \
 	laravel-optimize-clear \
 	npm-i \
 	npm-run-build
-	git log -2
 s: start
 
 down:
