@@ -1,18 +1,21 @@
 # [laravel-docker](https://github.com/w3roman/laravel-docker)
 
-- NGINX
+- MYSQL
 - PHP-FPM
+  - CRON
   - MARIADB-CLIENT
+  - PV
   - UNZIP
-  - NODEJS
-  - NPM
   - EXTENSIONS:
     - exif
+    - intl
     - pdo_mysql
     - xdebug
     - zip
   - COMPOSER
-- MYSQL
+- NGINX
+- NODE
+  - NPM
 - LARAVEL
   - barryvdh/laravel-ide-helper
 
