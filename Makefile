@@ -13,6 +13,7 @@ start: \
 	laravel-optimize-clear \
 	npm-i \
 	npm-run-build
+s: start
 
 down:
 	docker compose down -v --remove-orphans
