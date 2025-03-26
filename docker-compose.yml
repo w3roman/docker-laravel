@@ -14,6 +14,7 @@ services:
       interval: 5s
       timeout: 5s
       retries: 20
+    restart: always
   php-fpm:
     build: ./.docker/php/fpm
     image: ${PROJECT_NAME}-php-fpm
@@ -28,17 +29,21 @@ services:
       mysql:
         condition: service_healthy
     working_dir: /app
+    user: 1000:1000
+    restart: always
   cron:
     pull_policy: never
     image: ${PROJECT_NAME}-php-fpm
     container_name: ${PROJECT_NAME}-cron
+    env_file:
+      - ./.env
     volumes:
       - ./app:/app
-      - ./.env:/etc/environment
     depends_on:
       - php-fpm
     user: root
-    entrypoint: ['cron', '-f']
+    command: ['crond', '-f']
+    restart: always
   nginx:
     build: ./.docker/nginx
     image: ${PROJECT_NAME}-nginx
@@ -52,6 +57,7 @@ services:
       - ./app:/app
     depends_on:
       - php-fpm
+    restart: always
   node:
     build: ./.docker/node
     image: ${PROJECT_NAME}-node
@@ -67,6 +73,7 @@ services:
     working_dir: /app
     user: 1000:1000
     tty: true
+    restart: always
 networks:
   default:
     name: ${PROJECT_NAME}-default
