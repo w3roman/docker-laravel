@@ -59,6 +59,9 @@ laravel-ide-helper:
 laravel-optimize-clear:
 	docker compose exec php-fpm php artisan optimize:clear
 
+bash-php-fpm:
+	docker compose exec php-fpm bash
+
 npm-i:
 	docker compose exec node npm i
 
