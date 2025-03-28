@@ -1,7 +1,7 @@
 FROM php:8.4.5-fpm-alpine
 
 # https://stackoverflow.com/q/57048428/4223982 (Package 'mysql-client' has no installation candidate)
-RUN apk update && apk upgrade && apk add mariadb-client pv unzip
+RUN apk update && apk upgrade && apk add unzip
 
 # install-php-extensions
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/

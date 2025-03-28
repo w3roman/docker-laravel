@@ -9,6 +9,8 @@ services:
       - ${MYSQL_HOST_PORT}:3306
     volumes:
       - ./.docker/.mysql:/var/lib/mysql
+      - ./app:/app
+    working_dir: /app
     healthcheck:
       test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
       interval: 5s
