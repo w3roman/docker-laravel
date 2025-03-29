@@ -1,6 +1,5 @@
 FROM php:8.4.5-fpm-alpine
 
-# https://stackoverflow.com/q/57048428/4223982 (Package 'mysql-client' has no installation candidate)
 RUN apk update && apk upgrade && apk add unzip
 
 # install-php-extensions
