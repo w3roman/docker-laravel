@@ -1,21 +1,23 @@
 services:
-  mysql:
-    build: ./.docker/mysql
-    image: ${PROJECT_NAME}-mysql
-    container_name: ${PROJECT_NAME}-mysql
+  mariadb:
+    build: ./.docker/mariadb
+    image: ${PROJECT_NAME}-mariadb
+    container_name: ${PROJECT_NAME}-mariadb
     env_file:
       - ./.env
     ports:
-      - ${MYSQL_HOST_PORT}:3306
+      - ${MARIADB_HOST_PORT}:${DB_PORT}
     volumes:
-      - ./.docker/.mysql:/var/lib/mysql
+      - ./.docker/.mariadb:/var/lib/mysql
       - ./app:/app
     working_dir: /app
+    # https://mariadb.com/kb/en/using-healthcheck-sh/#compose-file-example
     healthcheck:
-      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
-      interval: 5s
+      test: ['CMD', 'healthcheck.sh', '--connect', '--innodb_initialized']
+      start_period: 10s
+      interval: 10s
       timeout: 5s
-      retries: 20
+      retries: 3
     restart: always
   php-fpm:
     build: ./.docker/php/fpm
@@ -28,7 +30,7 @@ services:
       - ./.docker/php/fpm/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
       - ./app:/app
     depends_on:
-      mysql:
+      mariadb:
         condition: service_healthy
     working_dir: /app
     user: 1000:1000

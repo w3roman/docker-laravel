@@ -71,6 +71,16 @@ npm-run-dev:
 npm-run-build:
 	docker compose exec node npm run build
 
+db-export:
+	docker compose exec mariadb sh -c \
+		'mariadb-dump -p$$MARIADB_ROOT_PASSWORD database | \
+		gzip > database.sql.gz'
+
+db-import:
+	docker compose exec mariadb sh -c \
+		'zcat < database.sql.gz | mariadb -p$$MARIADB_ROOT_PASSWORD database'
+
+
 # make <target> run-with-caution=!
 ifeq ($(run-with-caution), !)
 # Copy the saved [.env.*] file and configure it

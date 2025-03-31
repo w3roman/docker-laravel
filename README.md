@@ -1,10 +1,7 @@
 # [laravel-docker](https://github.com/w3roman/laravel-docker)
 
-- MYSQL
+- MARIADB
 - PHP-FPM
-  - CRON
-  - MARIADB-CLIENT
-  - PV
   - UNZIP
   - EXTENSIONS:
     - exif
@@ -13,6 +10,7 @@
     - xdebug
     - zip
   - COMPOSER
+- CRON (PHP-FPM)
 - NGINX
 - NODE
   - NPM
