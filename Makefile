@@ -88,12 +88,14 @@ init: \
 	up \
 	create-project \
 	configure-project \
-	install-packages \
+	install-composer-packages \
+	laravel-ide-helper-gitignore \
 	laravel-storage-link \
 	laravel-migrate \
 	laravel-ide-helper \
-	laravel-ide-helper-gitignore \
+	laravel-optimize-clear \
 	npm-i \
+	install-npm-packages \
 	clear-init-files \
 	git-init \
 	npm-run-build
@@ -107,12 +109,15 @@ configure-project:
 	docker compose exec php-fpm php configure-project.php
 	rm ./app/configure-project.php
 
-install-packages:
-	docker compose exec php-fpm composer require --dev barryvdh/laravel-ide-helper
+install-composer-packages:
+	docker compose exec php-fpm composer req --dev barryvdh/laravel-ide-helper
 
 laravel-ide-helper-gitignore:
 	docker compose exec php-fpm echo '.phpstorm.meta.php' >> app/.gitignore
 	docker compose exec php-fpm echo '_ide_helper.php' >> app/.gitignore
+
+install-npm-packages:
+	docker compose exec node npm i -D sass-embedded
 
 clear-init-files:
 	cp ./Makefile ./app/Makefile
