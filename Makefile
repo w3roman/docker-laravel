@@ -102,7 +102,7 @@ init: \
 
 create-project:
 	docker compose exec php-fpm rm .gitkeep
-	docker compose exec php-fpm composer create-project --no-interaction --prefer-dist laravel/laravel .
+	docker compose exec php-fpm composer create-project --no-cache --no-interaction --prefer-dist laravel/laravel .
 
 configure-project:
 	cp ./.docker/.helpers/configure-project.php ./app
