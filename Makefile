@@ -80,46 +80,6 @@ db-import:
 	docker compose exec mariadb sh -c \
 		'zcat < database.sql.gz | mariadb -p$$MARIADB_ROOT_PASSWORD database'
 
-
-# make <target> run-with-caution=!
-ifeq ($(run-with-caution), !)
-# Copy the saved [.env.*] file and configure it
-init-existing-project: \
-	down \
-	up \
-	composer-i \
-	laravel-key-generate \
-	laravel-storage-link \
-	laravel-migrate \
-	laravel-db-seed \
-	laravel-ide-helper \
-	laravel-optimize-clear \
-	npm-i \
-	npm-run-dev
-
-update-dev:
-	git pull \
-	&& cd app \
-	&& rm -fr storage/app/public/* \
-	&& php artisan db:wipe \
-	&& composer i \
-	&& php artisan migrate \
-	&& php artisan db:seed \
-	&& php artisan optimize:clear \
-	&& npm i \
-	&& npm run build
-endif
-
-update-prod:
-	git pull \
-	&& cd app \
-	&& composer i \
-	&& php artisan migrate \
-	&& php artisan optimize:clear \
-	&& php artisan event:cache \
-	&& npm i \
-	&& npm run build
-
 # ----------------------------------------------------------------------------------------------------------------------
 
 init: \
