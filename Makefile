@@ -95,7 +95,7 @@ init: \
 	npm-i \
 	clear-init-files \
 	git-init \
-	npm-run-dev
+	npm-run-build
 
 create-project:
 	docker compose exec php-fpm rm .gitkeep
@@ -114,11 +114,11 @@ laravel-ide-helper-gitignore:
 	docker compose exec php-fpm echo '_ide_helper.php' >> app/.gitignore
 
 clear-init-files:
-	cp ./.docker/.helpers/clear-makefile.php ./app
 	cp ./Makefile ./app/Makefile
+	cp ./.docker/.helpers/clear-makefile.php ./app
 	docker compose exec php-fpm php clear-makefile.php
-	mv ./app/Makefile ./Makefile
 	rm ./app/clear-makefile.php
+	mv ./app/Makefile ./Makefile
 	rm -r ./.docker/.helpers
 	echo '' > README.md
 

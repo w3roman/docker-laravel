@@ -19,44 +19,32 @@
 ---
 
 - [Initialization](#initialization)
-- [Initializing an existing project](#initializing-an-existing-project)
-- [Starting an existing project](#starting-an-existing-project)
+- [Start / Restart](#start--restart)
 
 ## Initialization
 
-``` sh
-git clone https://gitlab.com/w3lifer/laravel-docker.git laravel
-cd laravel
-```
-
-> You can set environment variables in the [`.env`](.env) file
+> You can set environment variables in the [`.env`](.env) file.
 
 ``` sh
+git clone https://github.com/w3roman/laravel-docker.git laravel && \
+cd laravel && \
 make init
 ```
 
-After this, the `.git` directory will be deleted and the new repository will be created
+After this, the `.git` directory will be deleted and a new repository will be created.
 
-Hence, you can add your remote `origin` to the newly created repository, commit and push the initial commit:
+Now you can add your remote `origin`, make a commit and push it to the remote repository:
 
 ``` sh
-git remote add origin git@gitlab.com:<user>/<repo>
+git remote add origin git@github.com:<user>/<repo>
 git add .
 git commit -m 'initial commit'
 git push -u origin master
 ```
 
-To access the app, open http://localhost:800 (see [`.env`](.env) file)
+<ins>To access the app</ins>, open http://localhost:800 (see [`.env`](.env) file).
 
-## Initializing an existing project
-
-``` sh
-git clone git@gitlab.com:<user>/<repo>
-cd <repo>
-make init-existing-project run-with-caution=!
-```
-
-## Starting an existing project
+## Start / Restart
 
 ``` sh
 make start
