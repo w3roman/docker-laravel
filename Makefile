@@ -26,10 +26,10 @@ up:
 	docker compose up -d --build --remove-orphans
 
 composer-i:
-	docker compose exec php-fpm composer i
+	docker compose exec php-fpm composer i --no-cache
 
 composer-u:
-	docker compose exec php-fpm composer u
+	docker compose exec php-fpm composer u --no-cache
 
 composer-du: # dump-autoload [dumpautoload]
 	docker compose exec php-fpm composer du
