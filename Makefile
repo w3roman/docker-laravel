@@ -101,7 +101,7 @@ init: \
 	npm-run-build
 
 create-project:
-	docker compose exec php-fpm rm .gitkeep
+	rm ./app/.gitkeep
 	docker compose exec php-fpm composer create-project --no-cache --no-interaction --prefer-dist laravel/laravel .
 
 configure-project:
