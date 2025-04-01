@@ -13,6 +13,7 @@
 - NGINX
 - NODE
   - NPM
+    - sass-embedded
 - LARAVEL
   - barryvdh/laravel-ide-helper
 
