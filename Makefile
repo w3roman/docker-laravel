@@ -19,6 +19,8 @@ down:
 	docker compose down -v --remove-orphans
 d: down
 
+restart: down up
+
 git-pull:
 	git pull
 
