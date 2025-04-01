@@ -61,7 +61,9 @@ laravel-optimize-clear:
 	docker compose exec php-fpm php artisan optimize:clear
 
 bash-php-fpm:
-	docker compose exec php-fpm sh
+	docker compose exec php-fpm bash
+bash: bash-php-fpm
+b: bash
 
 npm-i:
 	docker compose exec node npm i
