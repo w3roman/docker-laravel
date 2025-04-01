@@ -10,7 +10,6 @@ services:
     volumes:
       - ./.docker/.mariadb:/var/lib/mysql
       - ./app:/app
-    working_dir: /app
     # https://mariadb.com/kb/en/using-healthcheck-sh/#compose-file-example
     healthcheck:
       test: ['CMD', 'healthcheck.sh', '--connect', '--innodb_initialized']
@@ -18,6 +17,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 3
+    working_dir: /app
     restart: always
   php-fpm:
     build: ./.docker/php/fpm
@@ -32,8 +32,8 @@ services:
     depends_on:
       mariadb:
         condition: service_healthy
-    working_dir: /app
     user: 1000:1000
+    working_dir: /app
     restart: always
   cron:
     pull_policy: never
@@ -74,8 +74,8 @@ services:
       - ./app:/app
     depends_on:
       - nginx
-    working_dir: /app
     user: 1000:1000
+    working_dir: /app
     tty: true
     restart: always
 networks:
