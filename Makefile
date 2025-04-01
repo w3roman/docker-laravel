@@ -83,6 +83,12 @@ db-import:
 	docker compose exec mariadb sh -c \
 		'zcat < database.sql.gz | mariadb -p$$MARIADB_ROOT_PASSWORD database'
 
+update-prod: \
+	git-pull \
+	composer-i \
+	laravel-migrate \
+	npm-run-build
+
 # ----------------------------------------------------------------------------------------------------------------------
 
 init: \
