@@ -120,6 +120,7 @@ configure-project:
 
 install-composer-packages:
 	docker compose exec php-fpm composer req --dev --no-cache barryvdh/laravel-ide-helper
+	docker compose exec php-fpm composer req ext-xdebug:*
 
 laravel-ide-helper-gitignore:
 	docker compose exec php-fpm echo '.phpstorm.meta.php' >> app/.gitignore
