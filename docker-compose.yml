@@ -6,7 +6,7 @@ services:
     env_file:
       - ./.env
     ports:
-      - ${MARIADB_HOST_PORT}:3306
+      - ${MARIADB_HOST_PORT}:${DB_PORT}
     volumes:
       - ./.docker/.mariadb:/var/lib/mysql
       - ./app:/app
