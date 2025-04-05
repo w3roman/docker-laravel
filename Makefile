@@ -19,13 +19,13 @@ down:
 	docker compose down -v --remove-orphans
 d: down
 
-restart: down up
-
 git-pull:
 	git pull
 
 up:
 	docker compose up -d --build --remove-orphans
+
+restart: down up
 
 composer-i:
 	docker compose exec php-fpm composer i --no-cache
