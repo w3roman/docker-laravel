@@ -33,8 +33,8 @@ services:
     depends_on:
       mariadb:
         condition: service_healthy
-    user: 1000:1000
     working_dir: /app
+    user: 1000:1000
     restart: always
 
   cron:
@@ -78,8 +78,8 @@ services:
       - ./app:/app
     depends_on:
       - nginx
-    user: 1000:1000
     working_dir: /app
+    user: 1000:1000
     tty: true
     restart: always
 
