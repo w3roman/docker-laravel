@@ -1,4 +1,5 @@
 services:
+
   mariadb:
     build: ./.docker/mariadb
     image: ${PROJECT_NAME}-mariadb
@@ -19,6 +20,7 @@ services:
       retries: 3
     working_dir: /app
     restart: always
+
   php-fpm:
     build: ./.docker/php/fpm
     image: ${PROJECT_NAME}-php-fpm
@@ -35,6 +37,7 @@ services:
     user: 1000:1000
     working_dir: /app
     restart: always
+
   cron:
     pull_policy: never
     image: ${PROJECT_NAME}-php-fpm
@@ -48,6 +51,7 @@ services:
     user: root
     command: ['crond', '-f']
     restart: always
+
   nginx:
     build: ./.docker/nginx
     image: ${PROJECT_NAME}-nginx
@@ -62,6 +66,7 @@ services:
     depends_on:
       - php-fpm
     restart: always
+
   node:
     build: ./.docker/node
     image: ${PROJECT_NAME}-node
@@ -78,6 +83,7 @@ services:
     working_dir: /app
     tty: true
     restart: always
+
 networks:
   default:
     name: ${PROJECT_NAME}-default
