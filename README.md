@@ -32,9 +32,9 @@ cd laravel && \
 make init
 ```
 
-After this, the `.git` directory will be deleted and a new repository will be created.
+Once the project is started, the `.git` directory will be deleted and a new repository will be created.
 
-Now you can add your remote `origin`, make a commit and push it to the remote repository:
+Now you can add your `origin`, make a commit and push it to the remote repository:
 
 ``` sh
 git remote add origin git@github.com:<user>/<repo>
