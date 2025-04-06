@@ -48,5 +48,5 @@ git push -u origin master
 ## Start / Restart
 
 ``` sh
-make start
+make start # make s
 ```
