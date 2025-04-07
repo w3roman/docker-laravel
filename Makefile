@@ -74,14 +74,17 @@ npm-run-dev:
 npm-run-build:
 	docker compose exec node npm run build
 
-db-export:
-	docker compose exec mariadb sh -c \
-		'mariadb-dump -p$$MARIADB_ROOT_PASSWORD database | \
-		gzip > database.sql.gz'
+db-export-gz:
+	docker compose exec mariadb sh -c 'mariadb-dump -p$$MARIADB_ROOT_PASSWORD database | gzip > database.sql.gz'
 
-db-import:
-	docker compose exec mariadb sh -c \
-		'zcat < database.sql.gz | mariadb -p$$MARIADB_ROOT_PASSWORD database'
+db-import-gz:
+	docker compose exec mariadb sh -c 'zcat < database.sql.gz | mariadb -p$$MARIADB_ROOT_PASSWORD database'
+
+db-export-sql:
+	docker compose exec mariadb sh -c 'mariadb-dump -p$$MARIADB_ROOT_PASSWORD database > database.sql'
+
+db-import-sql:
+	docker compose exec mariadb sh -c 'mariadb -p$$MARIADB_ROOT_PASSWORD database < database.sql'
 
 update: \
 	git-pull \
