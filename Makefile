@@ -68,6 +68,9 @@ sh:
 npm-i:
 	docker compose exec node npm i
 
+npm-up:
+	docker compose exec node npm up
+
 npm-run-dev:
 	docker compose exec node npm run dev
 
