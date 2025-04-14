@@ -13,7 +13,7 @@ start: \
 	laravel-optimize-clear \
 	npm-i \
 	npm-run-build
-	rm app/public/hot # Disable @vite's `dev` mode when `npm run dev` fails without removing the `hot` file
+	rm -f app/public/hot # Disable @vite's `dev` mode when `npm run dev` fails without removing the `hot` file
 s: start
 
 down:
