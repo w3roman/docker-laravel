@@ -27,7 +27,7 @@ file_put_contents('package.json', json_encode($packageJsonContent, JSON_PRETTY_P
 
 $viteConfigJsContent = file_get_contents('vite.config.js');
 $viteConfigJsContent = preg_replace(
-    '=export default defineConfig\(\{=',
+    '=(export default defineConfig\(\{)=',
     '$1' . <<<SERVER
 
     server: {
