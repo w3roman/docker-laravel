@@ -22,7 +22,7 @@
 - [Initialization](#initialization)
 - [Start / Restart](#start--restart)
 - [xDebug settings](#xdebug-settings)
-    - [PhpStorm](#phpstorm)
+    - [PhpStorm](#xdebug-settings--phpstorm)
 
 ## Initialization
 
@@ -55,6 +55,7 @@ make start # make s
 
 ## xDebug settings
 
+<a name="xdebug-settings--phpstorm"></a>
 ### PhpStorm
 
 <img src="img/xdebug-settings/phpstorm.png" alt="xDebug settings | PhpStorm">
