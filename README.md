@@ -21,6 +21,8 @@
 
 - [Initialization](#initialization)
 - [Start / Restart](#start--restart)
+- [xDebug settings](#xdebug-settings)
+    - [PhpStorm](#phpstorm)
 
 ## Initialization
 
@@ -50,3 +52,9 @@ git push -u origin master
 ``` sh
 make start # make s
 ```
+
+## xDebug settings
+
+### PhpStorm
+
+<img src="img/xdebug-settings/phpstorm.png" alt="xDebug settings | PhpStorm">
