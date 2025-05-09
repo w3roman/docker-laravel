@@ -1,4 +1,4 @@
-# [laravel-docker](https://github.com/w3roman/laravel-docker)
+# [docker-laravel](https://github.com/w3roman/docker-laravel)
 
 - MARIADB
 - PHP-FPM+CRON
