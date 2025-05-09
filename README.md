@@ -16,6 +16,7 @@
     - sass-embedded
 - LARAVEL
   - barryvdh/laravel-ide-helper
+- HTTPS
 
 ---
 
