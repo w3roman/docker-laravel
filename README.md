@@ -31,7 +31,7 @@
 > You can set environment variables in the [[.env](.env)] file
 
 ``` sh
-git clone https://github.com/w3roman/laravel-docker.git laravel && \
+git clone https://github.com/w3roman/docker-laravel.git laravel && \
 cd laravel && \
 make init
 ```
