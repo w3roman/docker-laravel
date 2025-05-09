@@ -48,7 +48,7 @@ git push -u origin master
 
 ## Access the app
 
-> Default HTTPS port is 900, see [[.env](.env)] file
+> Default HTTPS port is 900, see [[.env](.env#L5)] file
 
 1. Add [[localhost-cert.pem](.docker/certs/localhost-cert.pem)] certificate to your Browser.
 2. Open https://localhost:900.
@@ -56,7 +56,7 @@ git push -u origin master
 For access with domain zone:
 
 - Add the entry `127.0.0.1 localhost.localhost` to your [`hosts`] file.
-- Change `APP_URL` to `https://localhost.localhost:${_NGINX_PORT_HTTPS}` in [[app/.env](app/.env)]
+- Change `APP_URL` to `https://localhost.localhost:${_NGINX_PORT_HTTPS}` in [[app/.env](app/.env#L6)]
 - Open https://localhost.localhost:900.
 
 ## Start / Restart
