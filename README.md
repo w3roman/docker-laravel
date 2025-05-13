@@ -33,7 +33,7 @@
 ``` sh
 git clone https://github.com/w3roman/docker-laravel.git laravel && \
 cd laravel && \
-make init
+make i # make init
 ```
 
 Once the project is started, the `.git` directory will be deleted and a new repository will be created.

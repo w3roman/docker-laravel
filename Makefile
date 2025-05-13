@@ -116,6 +116,7 @@ init: \
 	clear-init-files \
 	git-init \
 	npm-run-build
+i: init
 
 create-project:
 	rm ./app/.gitkeep
