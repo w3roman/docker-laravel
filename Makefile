@@ -16,9 +16,6 @@ start: \
 	rm -f app/public/hot # Disable @vite's `dev` mode when `npm run dev` fails without removing the `hot` file
 s: start
 
-rebuild:
-	docker compose build --no-cache
-
 down:
 	docker compose down -v --remove-orphans
 d: down
@@ -28,6 +25,9 @@ git-pull:
 
 up:
 	docker compose up -d --build --remove-orphans
+
+rebuild:
+	docker compose build --no-cache
 
 restart: down up
 
