@@ -15,6 +15,7 @@
   - NPM
     - sass-embedded
 - LARAVEL
+  - barryvdh/laravel-debugbar
   - barryvdh/laravel-ide-helper
 - HTTPS
 
