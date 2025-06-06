@@ -121,7 +121,8 @@ init: \
 	install-npm-packages \
 	clear-init-files \
 	git-init \
-	npm-run-build
+	npm-run-build \
+	down
 i: init
 
 create-project:
