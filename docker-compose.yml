@@ -11,13 +11,13 @@ services:
     volumes:
       - ./.docker/.mariadb:/var/lib/mysql
       - ./app:/app
-    working_dir: /app
     healthcheck:
       test: ['CMD', 'healthcheck.sh', '--connect', '--innodb_initialized']
       start_period: 10s
       interval: 10s
       timeout: 5s
       retries: 3
+    working_dir: /app
     restart: always
 
   php-fpm:
