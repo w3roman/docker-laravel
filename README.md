@@ -30,7 +30,7 @@
 
 ## Initialization
 
-> You can set environment variables in the [[.env](.env)] file
+> You can set environment variables in the [`.env`](.env) file
 
 ``` sh
 git clone https://github.com/w3roman/docker-laravel.git laravel && \
@@ -51,8 +51,9 @@ git push -u origin master
 
 ## Access the app
 
-1. [Install `mkcert`](https://github.com/FiloSottile/mkcert?tab=readme-ov-file#installation).
-2. Install local CA (Certificate Authority):
+**1.** [Install `mkcert`](https://github.com/FiloSottile/mkcert?tab=readme-ov-file#installation).
+
+**2.** Install local CA (Certificate Authority):
 
 ``` sh
 mkcert -install
@@ -60,15 +61,16 @@ mkcert -install
 
 > ![image](img/certificate-generation/1-mkcert-install.png)
 
-- **Chrome/Chromium**: `chrome://certificate-manager/localcerts/platformcerts`
-
-> ![image](img/certificate-generation/2-chrome-certificate-manager.png)
-
 - **Firefox**: `about:preferences#privacy`
 
 > ![image](img/certificate-generation/3-firefox-certificate-manager.png)
 
-3. Generate a certificate and save it to the [[.docker/certs](.docker/certs)] directory:
+- **Chrome/Chromium**: `chrome://certificate-manager/localcerts/platformcerts`
+
+> ![image](img/certificate-generation/2-chrome-certificate-manager.png)
+
+
+**3.** Generate a certificate and save it to the [`.docker/certs`](.docker/certs) directory:
 
 ``` sh
 # In Firefox, the IPv6 unspecified address `[::]` is typically redirected to the loopback IPv6 address `[::1]`
@@ -79,18 +81,18 @@ mkcert -cert-file localhost-cert.pem -key-file localhost-key.pem \
 
 > ![image](img/certificate-generation/4-certificate-generation.png)
 
-4. Restart the app:
+**4.** Restart the app:
 
 ``` sh
 make s # make start
 ```
 
-5. Open https://localhost:900 (default HTTPS port is 900, see [[.env](.env#L5)] file).
+**5.** Open https://localhost:900 (default HTTPS port is 900, see [`.env`](.env#L5) file).
 
 For access with domain zone:
 
-- Add the entry `127.0.0.1 localhost.localhost` to your [`hosts`] file.
-- Change `APP_URL` to `"https://localhost.localhost:${_NGINX_PORT_HTTPS}"` in [[app/.env](app/.env#L6)].
+- Add the entry `127.0.0.1 localhost.localhost` to your `hosts` file.
+- Change `APP_URL` to `"https://localhost.localhost:${_NGINX_PORT_HTTPS}"` in [`app/.env`](app/.env#L6).
 - Open https://localhost.localhost:900.
 
 ## Development with Firefox
