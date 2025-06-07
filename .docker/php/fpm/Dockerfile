@@ -11,3 +11,5 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 COPY crontab /crontab
 RUN crontab /crontab
+
+RUN adduser -D -s /bin/sh -u 1000 dockerUser
