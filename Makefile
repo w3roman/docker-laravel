@@ -4,6 +4,7 @@ default:
 start: \
 	down \
 	git-pull \
+	generate-certs \
 	up \
 	composer-i \
 	laravel-key-generate \
@@ -22,6 +23,13 @@ d: down
 
 git-pull:
 	git pull
+
+generate-certs:
+	if [ ! -f ./.docker/certs/localhost-cert.pem ]; then \
+		cd .docker/certs && \
+		mkcert -cert-file localhost-cert.pem -key-file localhost-key.pem \
+		127.0.0.1 localhost localhost.localhost :: ::1; \
+	fi
 
 up:
 	docker compose up -d --build --remove-orphans
@@ -108,6 +116,7 @@ update: \
 
 init: \
 	down \
+	generate-certs \
 	up \
 	create-project \
 	configure-project \

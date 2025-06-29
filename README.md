@@ -19,10 +19,11 @@
   - barryvdh/laravel-ide-helper
 - HTTPS
 
+> You can set environment variables in the [`.env`](.env) file
+
 ---
 
 - [Initialization](#initialization)
-- [Access the app](#access-the-app)
 - [Development with Firefox](#development-with-firefox)
 - [Start / Restart](#start--restart)
 - [xDebug settings](#xdebug-settings)
@@ -30,32 +31,9 @@
 
 ## Initialization
 
-> You can set environment variables in the [`.env`](.env) file
+**1.** [Install `mkcert`](https://github.com/FiloSottile/mkcert?tab=readme-ov-file#installation) and generate a local CA (Certificate Authority):
 
-``` sh
-git clone https://github.com/w3roman/docker-laravel.git laravel && \
-cd laravel && \
-make i # make init
-```
-
-Once the project is started, the `.git` directory will be deleted and a new repository will be created.
-
-Now you can add your `origin`, make a commit and push it to the remote repository:
-
-``` sh
-git remote add origin git@github.com:<user>/<repo>
-git add .
-git commit -m 'initial commit'
-git push -u origin master
-```
-
-## Access the app
-
-**1.** [Install `mkcert`](https://github.com/FiloSottile/mkcert?tab=readme-ov-file#installation).
-
-**2.** Install local CA (Certificate Authority):
-
-``` sh
+```sh
 mkcert -install
 ```
 
@@ -69,30 +47,30 @@ mkcert -install
 
 > ![image](img/certificate-generation/2-chrome-certificate-manager.png)
 
-
-**3.** Generate a certificate and save it to the [`.docker/certs`](.docker/certs) directory:
-
-``` sh
-# In Firefox, the IPv6 unspecified address `[::]` is typically redirected to the loopback IPv6 address `[::1]`
-cd .docker/certs && \
-mkcert -cert-file localhost-cert.pem -key-file localhost-key.pem \
-127.0.0.1 localhost localhost.localhost :: ::1
-```
-
-> ![image](img/certificate-generation/4-certificate-generation.png)
-
-**4.** Restart the app:
+**2.** Clone the project and initialize it:
 
 ``` sh
-make s # make start
+git clone https://github.com/w3roman/docker-laravel.git laravel && \
+cd laravel && \
+make i # make init
 ```
 
-**5.** Open https://localhost:900 (default HTTPS port is 900, see [`.env`](.env#L5) file).
+Once the project starts, the `.git` directory will be removed, and a new repository will be created.
 
-For access with domain zone:
+Now you can add your `origin`, make a commit and push it to the remote repository:
 
-- Change `APP_URL` to `"https://localhost.localhost:${_NGINX_PORT_HTTPS}"` in [`app/.env`](app/.env#L6).
-- Open https://localhost.localhost:900.
+``` sh
+git remote add origin git@github.com:<user>/<repo>
+git add .
+git commit -m 'initial commit'
+git push -u origin master
+```
+
+**3.** Open https://localhost:900 (default HTTPS port is 900, see [`.env`](.env#L5) file).
+
+For access with a domain zone:
+- Change `APP_URL` to `https://localhost.localhost:${_NGINX_PORT_HTTPS}` in [`app/.env`](app/.env#L6).
+- Open `https://localhost.localhost:${_NGINX_PORT_HTTPS}`.
 
 ## Development with Firefox
 
@@ -110,7 +88,7 @@ the following errors occur in Firefox:
 > Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://[::]:51730/@vite/client...<br>
 Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://[::]:51730/resources/js/app.js...
 
-To fix them, you need to add the server `https://[::]:51730` to the exceptions.
+To fix them, you need to add the server `https://[::]:51730` to an exception.
 
 - `about:preferences#privacy`
 
