@@ -91,7 +91,6 @@ make s # make start
 
 For access with domain zone:
 
-- Add the entry `127.0.0.1 localhost.localhost` to your `hosts` file.
 - Change `APP_URL` to `"https://localhost.localhost:${_NGINX_PORT_HTTPS}"` in [`app/.env`](app/.env#L6).
 - Open https://localhost.localhost:900.
 
@@ -113,6 +112,8 @@ Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remot
 
 To fix them, you need to add the server `https://[::]:51730` to the exceptions.
 
+- `about:preferences#privacy`
+
 > ![image](img/certificate-generation/development-with-firefox-certificate-manager-step-1.png)
 
 > ![image](img/certificate-generation/development-with-firefox-certificate-manager-step-2.png)
@@ -127,7 +128,7 @@ make start # make s
 
 ## xDebug settings
 
-<a name="xdebug-settings--phpstorm"></a>
 ### PhpStorm
+<a name="xdebug-settings--phpstorm"></a>
 
 > ![xDebug settings | PhpStorm](img/xdebug-settings/phpstorm.png)
