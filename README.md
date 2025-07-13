@@ -66,10 +66,10 @@ git commit -m 'initial commit'
 git push -u origin master
 ```
 
-**3.** Open https://localhost:900 (default HTTPS port is 900, see [`.env`](.env#L5) file).
+**3.** Open https://localhost:900 (default HTTPS port is 900, see [`.env`](.env) file).
 
 For access with a domain zone:
-- Change `APP_URL` to `https://localhost.localhost:${_NGINX_PORT_HTTPS}` in [`app/.env`](app/.env#L6).
+- Change `APP_URL` to `https://localhost.localhost:${_NGINX_PORT_HTTPS}` in [`app/.env`](app/.env).
 - Open `https://localhost.localhost:${_NGINX_PORT_HTTPS}`.
 
 ## Development with Firefox
