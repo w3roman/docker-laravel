@@ -1,4 +1,4 @@
-FROM mariadb:11.7.2
+FROM mariadb:11.8.3
 
 RUN apt update && apt -y upgrade && apt install pv && apt autoremove && apt clean
 
