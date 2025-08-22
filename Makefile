@@ -34,9 +34,6 @@ generate-certs:
 up:
 	docker compose up -d --build --remove-orphans
 
-rebuild:
-	docker compose build --no-cache
-
 restart: down up
 
 composer-i:
@@ -92,6 +89,14 @@ npm-run-dev:
 npm-run-build:
 	docker compose exec node npm run build
 npm-run-prod: npm-run-build
+
+rebuild-php-fpm:
+	docker compose build --no-cache php-fpm
+	docker compose up -d --remove-orphans
+
+rebuild-node:
+	docker compose build --no-cache node
+	docker compose up -d --remove-orphans
 
 db-export-gz:
 	docker compose exec mariadb sh -c 'su dockerUser -c "mariadb-dump -u root -p\"$$MARIADB_ROOT_PASSWORD\" database | gzip > database.sql.gz"'
