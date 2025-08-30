@@ -88,7 +88,6 @@ npm-run-dev:
 
 npm-run-build:
 	docker compose exec node npm run build
-npm-run-prod: npm-run-build
 
 rebuild-php-fpm:
 	docker compose build --no-cache php-fpm
@@ -97,6 +96,24 @@ rebuild-php-fpm:
 rebuild-node:
 	docker compose build --no-cache node
 	docker compose up -d --remove-orphans
+
+update-dev: \
+	git-pull \
+	rebuild-php-fpm \
+	composer-u \
+	laravel-migrate \
+	rebuild-node \
+	npm-up \
+	npm-run-dev
+
+update-prod: \
+	git-pull \
+	rebuild-php-fpm \
+	composer-i \
+	laravel-migrate \
+	rebuild-node \
+	npm-i \
+	npm-run-build
 
 db-export-gz:
 	docker compose exec mariadb sh -c 'su dockerUser -c "mariadb-dump -u root -p\"$$MARIADB_ROOT_PASSWORD\" database | gzip > database.sql.gz"'
@@ -109,13 +126,6 @@ db-export-sql:
 
 db-import-sql:
 	docker compose exec mariadb sh -c 'pv database.sql | mariadb -p"$$MARIADB_ROOT_PASSWORD" database'
-
-update: \
-	git-pull \
-	composer-i \
-	laravel-migrate \
-	npm-i \
-	npm-run-build
 
 # ----------------------------------------------------------------------------------------------------------------------
 
