@@ -89,6 +89,10 @@ npm-run-dev:
 npm-run-build:
 	docker compose exec node npm run build
 
+rebuild-mariadb:
+	docker compose build --no-cache mariadb
+	docker compose up -d --remove-orphans
+
 rebuild-php-fpm:
 	docker compose build --no-cache php-fpm
 	docker compose up -d --remove-orphans
