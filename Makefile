@@ -95,6 +95,7 @@ rebuild-mariadb:
 
 rebuild-php-fpm:
 	docker compose build --no-cache php-fpm
+	docker compose stop nginx
 	docker compose up -d --remove-orphans
 
 rebuild-node:
