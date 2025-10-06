@@ -1,7 +1,7 @@
 FROM mariadb:11.8.3
 
 RUN apt update && \
-    apt -y upgrade && \
+    apt upgrade -y && \
     apt install -y --no-install-recommends pv && \
     apt autoremove -y && \
     apt clean && \
