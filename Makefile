@@ -98,6 +98,10 @@ rebuild-php-fpm:
 	docker compose stop nginx
 	docker compose up -d --remove-orphans
 
+rebuild-nginx:
+	docker compose build --no-cache nginx
+	docker compose up -d --remove-orphans
+
 rebuild-node:
 	docker compose build --no-cache node
 	docker compose up -d --remove-orphans
