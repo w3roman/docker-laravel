@@ -1,4 +1,4 @@
-FROM mariadb:11.8.3
+FROM mariadb:11.8.4
 
 RUN apt update && \
     apt upgrade -y && \
