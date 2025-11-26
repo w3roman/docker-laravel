@@ -105,6 +105,8 @@ rebuild-nginx:
 rebuild-node:
 	docker compose build --no-cache node
 	docker compose up -d --remove-orphans
+	docker compose exec node npm i
+	docker compose exec node npm run build
 
 update-dev: \
 	git-pull \
