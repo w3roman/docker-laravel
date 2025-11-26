@@ -6,7 +6,8 @@ const PATH_TO_ENV = '.env';
 
 $config = file_get_contents(PATH_TO_ENV);
 
-$config = preg_replace('=APP_URL\=http://localhost=', 'APP_URL="https://localhost:${_NGINX_PORT_HTTPS}"', $config);
+$config = preg_replace('=APP_URL\=http://localhost=', 'APP_URL="https://localhost:${_NGINX_PORT_HTTPS}"
+ASSET_URL="${APP_URL}"', $config);
 
 $config = preg_replace('=DB_CONNECTION\=sqlite=', 'DB_CONNECTION="${DB_CONNECTION}"', $config);
 $config = preg_replace('=# DB_HOST\=127\.0\.0\.1=', 'DB_HOST="${DB_HOST}"', $config);
