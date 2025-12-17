@@ -1,6 +1,6 @@
 FROM php:8.5.0-fpm-alpine
 
-RUN apk update && apk upgrade && apk add unzip
+RUN apk update && apk upgrade && apk add --no-cache unzip
 
 # install-php-extensions
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
