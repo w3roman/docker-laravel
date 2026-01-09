@@ -97,7 +97,6 @@ rebuild-php-fpm:
 	docker compose build --no-cache php-fpm
 	docker compose stop nginx
 	make up
-	make composer-u
 
 rebuild-nginx:
 	docker compose build --no-cache nginx
