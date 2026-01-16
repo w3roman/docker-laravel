@@ -1,3 +1,3 @@
-FROM node:24.12.0-alpine
+FROM node:24.13.0-alpine
 
 RUN npm up -g
