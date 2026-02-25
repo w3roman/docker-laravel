@@ -79,6 +79,7 @@ sh-node:
 
 npm-i:
 	docker compose exec node npm i
+	docker compose exec node npm run build
 
 npm-up:
 	docker compose exec node npm up
@@ -87,6 +88,11 @@ npm-run-dev:
 	docker compose exec node npm run dev
 
 npm-run-build:
+	docker compose exec node npm run build
+
+npm-audit-fix:
+	docker compose exec node npm audit fix
+	docker compose exec node npm i
 	docker compose exec node npm run build
 
 rebuild-mariadb:
