@@ -1,4 +1,4 @@
-FROM php:8.5.5-fpm-alpine
+FROM php:8.5.6-fpm-alpine
 
 RUN apk update && apk upgrade && apk add --no-cache unzip
 
