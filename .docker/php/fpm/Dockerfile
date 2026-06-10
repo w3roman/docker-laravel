@@ -1,6 +1,6 @@
 FROM php:8.5.7-fpm-alpine
 
-RUN apk update && apk upgrade && apk add --no-cache unzip
+RUN apk update && apk upgrade && apk add --no-cache mariadb-client unzip
 
 # install-php-extensions
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
