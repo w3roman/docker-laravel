@@ -33,6 +33,8 @@ services:
     depends_on:
       mariadb:
         condition: service_healthy
+    extra_hosts:
+      - host.docker.internal:host-gateway # For `xdebug.client_host=host.docker.internal`
     working_dir: /app
     user: 1000:1000
     restart: always
