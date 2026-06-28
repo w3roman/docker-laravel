@@ -60,6 +60,9 @@ laravel-migrate-rollback-1:
 laravel-migrate-rollback-all:
 	docker compose exec php-fpm php artisan migrate:rollback --force
 
+laravel-migrate-refresh:
+	docker compose exec php-fpm php artisan migrate:refresh
+
 laravel-db-seed:
 	docker compose exec php-fpm php artisan db:seed
 
@@ -98,23 +101,24 @@ npm-audit-fix:
 
 rebuild-mariadb:
 	docker compose build --no-cache mariadb
-	make up
+	docker compose up -d --build --remove-orphans
 
 rebuild-php-fpm:
 	docker compose build --no-cache php-fpm
 	docker compose stop nginx
-	make up
+	docker compose up -d --build --remove-orphans
 
 rebuild-nginx:
 	docker compose build --no-cache nginx
 	docker compose stop nginx
-	make up
+	docker compose up -d --build --remove-orphans
 
 rebuild-node:
 	docker compose build --no-cache node
-	make up
+	docker compose up -d --build --remove-orphans
 	docker compose exec node npm i
 	docker compose exec node npm run build
+	docker compose restart nginx
 
 update-dev: \
 	git-pull \
