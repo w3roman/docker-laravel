@@ -75,6 +75,9 @@ laravel-optimize-clear:
 	docker compose exec php-fpm php artisan optimize:clear
 	docker compose exec mariadb sh -c 'su dockerUser -c "mariadb -u root -p\"$$MARIADB_ROOT_PASSWORD\" -e \"TRUNCATE TABLE cache_locks;\" database"'
 
+laravel-queue-listen:
+	docker compose exec php-fpm php artisan queue:listen
+
 sh:
 	docker compose exec php-fpm sh
 
