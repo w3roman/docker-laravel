@@ -2,6 +2,7 @@
 
 - MARIADB
 - PHP-FPM+CRON
+  - MARIADB-CLIENT
   - UNZIP
   - EXTENSIONS:
     - exif
