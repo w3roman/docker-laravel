@@ -1,7 +1,7 @@
 # [docker-laravel](https://github.com/w3roman/docker-laravel)
 
 - MARIADB
-- PHP-FPM+CRON
+- PHP-FPM
   - MARIADB-CLIENT
   - UNZIP
   - EXTENSIONS:
@@ -11,6 +11,7 @@
     - xdebug
     - zip
   - COMPOSER
+- CRON
 - NGINX
 - NODE
   - NPM
@@ -28,7 +29,7 @@
 - [Development with Firefox](#development-with-firefox)
 - [Start / Restart](#start--restart)
 - [xDebug settings](#xdebug-settings)
-    - [PhpStorm](#xdebug-settings--phpstorm)
+  - [PhpStorm](#xdebug-settings--phpstorm)
 
 ## Initialization
 
@@ -70,8 +71,9 @@ git push -u origin master
 **3.** Open https://localhost:900 (default HTTPS port is 900, see [`.env`](.env) file).
 
 For access with a domain zone:
+- Add `127.0.0.1 localhost.localhost` to `/etc/hosts`.
 - Change `APP_URL` to `https://localhost.localhost:${_NGINX_PORT_HTTPS}` in [`app/.env`](app/.env).
-- Open `https://localhost.localhost:${_NGINX_PORT_HTTPS}`.
+- Open `https://localhost.localhost:${_NGINX_PORT_HTTPS}` in your browser.
 
 ## Development with Firefox
 
