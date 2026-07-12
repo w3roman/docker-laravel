@@ -54,14 +54,25 @@ laravel-storage-link:
 laravel-migrate:
 	docker compose exec php-fpm php artisan migrate --force
 
+laravel-migrate-fresh:
+	docker compose exec php-fpm php artisan migrate:fresh
+
+laravel-migrate-fresh+seed:
+	docker compose exec php-fpm php artisan migrate:fresh
+	docker compose exec php-fpm php artisan db:seed
+
+laravel-migrate-refresh:
+	docker compose exec php-fpm php artisan migrate:refresh
+
+laravel-migrate-refresh+seed:
+	docker compose exec php-fpm php artisan migrate:refresh
+	docker compose exec php-fpm php artisan db:seed
+
 laravel-migrate-rollback-1:
 	docker compose exec php-fpm php artisan migrate:rollback --step=1 --force
 
 laravel-migrate-rollback-all:
 	docker compose exec php-fpm php artisan migrate:rollback --force
-
-laravel-migrate-refresh:
-	docker compose exec php-fpm php artisan migrate:refresh
 
 laravel-db-seed:
 	docker compose exec php-fpm php artisan db:seed
