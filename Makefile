@@ -203,7 +203,6 @@ install-composer-packages:
 
 laravel-ide-helper-gitignore:
 	docker compose exec php-fpm echo '.phpstorm.meta.php' >> app/.gitignore
-	docker compose exec php-fpm echo '_ide_helper.php' >> app/.gitignore
 
 install-npm-packages:
 	docker compose exec node npm i -D sass-embedded
