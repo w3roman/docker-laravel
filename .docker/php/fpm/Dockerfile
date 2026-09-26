@@ -1,4 +1,4 @@
-FROM php:8.5.9-fpm-alpine
+FROM php:8.5.11-fpm-alpine
 
 RUN apk update && apk upgrade && apk add --no-cache mariadb-client unzip
 
