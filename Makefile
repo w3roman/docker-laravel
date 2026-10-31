@@ -34,7 +34,7 @@ generate-certs:
 up:
 	docker compose up -d --build --remove-orphans
 
-restart: down up
+restart: down up laravel-optimize-clear
 
 composer-i:
 	docker compose run --rm php-fpm composer i --no-cache
