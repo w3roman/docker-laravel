@@ -101,6 +101,7 @@ npm-i:
 
 npm-up:
 	docker compose exec node npm up
+	docker compose run --rm node npm run build
 
 npm-run-dev:
 	docker compose exec node npm run dev
