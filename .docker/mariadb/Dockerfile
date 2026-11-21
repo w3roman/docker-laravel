@@ -1,4 +1,4 @@
-FROM mariadb:12.3.3
+FROM mariadb:13.0.2
 
 RUN apt update && \
     apt upgrade -y && \
