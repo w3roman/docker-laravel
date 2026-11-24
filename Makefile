@@ -116,21 +116,21 @@ npm-audit-fix:
 
 rebuild-mariadb:
 	docker compose build --no-cache mariadb
-	docker compose up -d
+	docker compose up -d --build --remove-orphans
 
 rebuild-php-fpm:
 	docker compose build --no-cache php-fpm
 	docker compose stop nginx
-	docker compose up -d
+	docker compose up -d --build --remove-orphans
 
 rebuild-nginx:
 	docker compose build --no-cache nginx
 	docker compose stop nginx
-	docker compose up -d
+	docker compose up -d --build --remove-orphans
 
 rebuild-node:
 	docker compose build --no-cache node
-	docker compose up -d
+	docker compose up -d --build --remove-orphans
 	docker compose exec node npm i
 	docker compose exec node npm run build
 	docker compose restart nginx
